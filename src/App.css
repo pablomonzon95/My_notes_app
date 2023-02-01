@@ -1,7 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Dancing+Script&family=Fjalla+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Dancing+Script&display=swap");
+
 .App {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
- 
+h2,
+button {
+  font-family: "Dancing Script", cursive;
+  font-family: "Fjalla One", sans-serif;
+}
+h1 {
+  font-family: "Alfa Slab One", cursive;
+  font-family: "Dancing Script", cursive;
+}
