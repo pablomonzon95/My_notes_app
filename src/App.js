@@ -1,12 +1,26 @@
 
 import './App.css';
+import React from "react";
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+import { ErrorPage } from './views/ErrorPage';
+import {MainPage} from './views/MainPage'
 
 function App() {
-  return (
-    <div className="App">
-   
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <MainPage/>,
+      errorElement: <ErrorPage />,
+    },])
+
+    return <div>
+    
+      <RouterProvider router={router} />
+    
+  </div>
 }
 
 export default App;
