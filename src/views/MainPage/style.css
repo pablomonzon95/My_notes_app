@@ -1,0 +1,19 @@
+.main_page {
+  background-image: url("../../../public/img/fondo.png");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main_page > main {
+  display: flex;
+  width: 100vw;
+
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.main_page > footer {
+  flex-grow: 0.1;
+  text-align: center;
+}
