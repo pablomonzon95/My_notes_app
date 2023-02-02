@@ -1,7 +1,9 @@
 .header {
+  min-width: 600px;
   padding: 1rem;
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
@@ -13,7 +15,7 @@
 .logo {
   position: relative;
   top: 0.5rem;
-  left: 0.5rem;
+  left: 0.8rem;
 }
 .logo h1 {
   font-size: 1rem;
@@ -23,12 +25,20 @@
   padding-top: 2rem;
 }
 .header button {
-  width: 100px;
+  border: solid 1px #cecdcd;
+  width: 110px;
   height: 50px;
   border-radius: 1rem;
   font-size: 1rem;
+  transition: 0.5s;
+}
+.header button:hover {
+  background-color: #cccbcb;
+  transition: 0.75s;
 }
 .buttonSection {
+  margin-right: 2rem;
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
