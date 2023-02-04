@@ -17,9 +17,13 @@ button {
   height: 50px;
   border-radius: 1rem;
   font-size: 1rem;
-  transition: 0.5s;
+ 
 }
 button:hover {
+  cursor:pointer;
   background-color: #cccbcb;
   transition: 0.75s;
+}
+button:active{
+  box-shadow: 4px 5px rgba(0,0,0,0.2)
 }

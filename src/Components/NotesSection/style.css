@@ -1,0 +1,30 @@
+.notesPanel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+.notesPanel h1{
+    padding: 2rem;
+    text-align: center;
+    
+}
+.notesPanel ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap:2rem;
+    justify-content: center;
+   
+}
+.notesPanel ul li{
+    background-image: url("../../../public/img/notita.jpg");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px solid rgba(199, 196, 196, 0.966);
+    min-height: 10rem;
+    max-width:12rem;
+    padding:0.5rem;
+}

@@ -1,6 +1,7 @@
+import './style.css'
 export const NotesSection = ({ title, publicNotes }) => {
   return (
-    <div className="Notespanel">
+    <div className="notesPanel">
       <h1>{title}</h1>
       <ul>
         {publicNotes.map((note) => {

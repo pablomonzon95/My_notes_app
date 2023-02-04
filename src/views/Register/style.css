@@ -1,0 +1,19 @@
+.extra-input{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.extra-input label {
+    font-family: "Lobster", cursive;
+    font-size: 2rem;
+}
+.extra-input input {
+  background-color: white;
+  border: none;
+  text-align: center;
+  max-width: 50vw;
+  height: 2rem;
+  border-radius: 5px;
+  font-size: 2rem;
+  margin-bottom: 5rem;
+}
