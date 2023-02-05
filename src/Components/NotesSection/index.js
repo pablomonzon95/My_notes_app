@@ -8,8 +8,8 @@ export const NotesSection = ({ title, publicNotes }) => {
           return (
             <li key={note.id}>
               <h3>{note.title}</h3>
-              <p>{note.note}</p>
               {note.image && <img src={note.image} alt={note.title} />}
+              <p>{note.note}</p>
             </li>
           );
         })}
