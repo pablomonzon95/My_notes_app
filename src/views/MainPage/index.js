@@ -1,12 +1,13 @@
 import "./style.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../Components/Header";
 import { NotesSection } from "../../Components/NotesSection";
 import { useNotes } from "../../hooks/useNotes";
+import { Footer } from "../../Components/Footer";
 
 export const MainPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { publicNotes } = useNotes();
 
   return (
@@ -15,10 +16,13 @@ export const MainPage = () => {
         <button onClick={() => navigate(`/login`)}>Login</button>
         <button onClick={() => navigate(`/register`)}>Register</button>
       </Header>
-      <main>
-        <NotesSection publicNotes={publicNotes} title="Forget about remember your important chores!" />
+      <main className="main">
+        <NotesSection
+          publicNotes={publicNotes}
+          title="Forget about remember your important chores!"
+        />
       </main>
-      <footer>Pablo Monzon & Fco Antonio Lorca </footer>
+      <Footer></Footer>
     </div>
   );
 };

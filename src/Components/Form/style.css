@@ -1,11 +1,12 @@
 .form {
   background-color: #e1eaf0;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
-  min-height: 100vh;
+
   gap: 1rem;
 }
 .form > label {
@@ -23,5 +24,3 @@
   font-size: 1rem;
   margin-bottom: 5rem;
 }
-
-

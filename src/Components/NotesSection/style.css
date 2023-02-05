@@ -1,30 +1,32 @@
-.notesPanel{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-   
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+.notesPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.notesPanel h1{
-    padding: 2rem;
-    text-align: center;
-    
+.notesPanel h1 {
+  padding: 2rem;
+  text-align: center;
 }
-.notesPanel ul{
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap:2rem;
-    justify-content: center;
-   
+.notesPanel ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
-.notesPanel ul li{
-    background-image: url("../../../public/img/notita.jpg");
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 0.5px solid rgba(199, 196, 196, 0.966);
-    min-height: 10rem;
-    max-width:12rem;
-    padding:0.5rem;
+.notesPanel ul li {
+  background-image: url("../../../public/img/notita.jpg");
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 15px gray;
+  align-items: center;
+  border: 0.5px solid rgba(199, 196, 196, 0.966);
+  height: 15rem;
+  width: 15rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
 }

@@ -1,11 +1,25 @@
-.extra-input{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+.formRegister {
+  background-color: #e1eaf0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.formRegister form {
+  padding-top: 3rem;
+  flex-grow: 1;
+}
+
+.extra-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .extra-input label {
-    font-family: "Lobster", cursive;
-    font-size: 2rem;
+  padding-bottom: 1rem;
+  font-family: "Lobster", cursive;
+  font-size: 2rem;
 }
 .extra-input input {
   background-color: white;

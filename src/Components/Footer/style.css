@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+.footer {
+  width: 98%;
+  display: flex;
+  font-weight: 500;
+  justify-content: flex-end;
+}
+.footer p {
+  font-family: "Itim", cursive;
+  font-size: 1.15rem;
+}
