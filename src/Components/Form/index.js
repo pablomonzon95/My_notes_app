@@ -1,11 +1,11 @@
 import "./style.css";
-export const Form = ({ textoBoton, children }) => {
+export const Form = ({ textoBoton, children, handleInputChangeFunction, handleSubmitFunction }) => {
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmitFunction}>
       <label htmlFor="email">Email</label>
-      <input type="email" id="email" name="email"></input>
+      <input onChange={handleInputChangeFunction} type="email" id="email" name="email" required></input>
       <label>Contraseña</label>
-      <input type="password" id="password" name="password"></input>
+      <input onChange={handleInputChangeFunction} type="password" id="password" name="password" required></input>
       <div className="children">{children}</div>
       <button>{textoBoton}</button>
     </form>
