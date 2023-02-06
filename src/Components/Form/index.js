@@ -5,7 +5,7 @@ export const Form = ({ textoBoton, children, handleInputChangeFunction, handleSu
       <label htmlFor="email">Email</label>
       <input onChange={handleInputChangeFunction} type="email" id="email" name="email" required></input>
       <label>Contraseña</label>
-      <input onChange={handleInputChangeFunction} type="password" id="password" name="password" required></input>
+      <input onChange={handleInputChangeFunction} type="password" id="password" name="password" minLength='5' maxLength='20' required></input>
       <div className="children">{children}</div>
       <button>{textoBoton}</button>
     </form>

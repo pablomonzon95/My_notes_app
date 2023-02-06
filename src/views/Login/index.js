@@ -5,7 +5,7 @@ import { Header } from "../../Components/Header";
 export const Login = () => {
   return (
     <div className="formLogin">
-      <Header></Header>
+      <Header tituloVista="Login"></Header>
       <Form textoBoton="Login"></Form>
       <Footer></Footer>
     </div>

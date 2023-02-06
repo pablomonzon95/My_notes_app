@@ -1,4 +1,4 @@
-import './style.css'
+import "./style.css"
 export const NotesSection = ({ title, publicNotes }) => {
   return (
     <div className="notesPanel">

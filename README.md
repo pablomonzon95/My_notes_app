@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+Cosas por mejorar hasta ahora: 
+en la API: ver como crear una nota publica que al mismo tiempo tenga una imagen;
+
+en frontend: ver como hacer para que aparezca la imagen que tenemos en el worbench adentro del cuerpo de la nota;
+
+mejorar el estilo del scroll que le puse a las notitas para cuando el texto sea muy largo;
+
+ver como podemos hacer que el input de confirmar contraseña sirva para algo.
