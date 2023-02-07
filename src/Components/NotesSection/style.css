@@ -18,18 +18,19 @@
 }
 .notesPanel ul li {
   background-image: url("../../../public/img/notita.jpg");
+  background-size: cover;
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px 15px gray;
   align-items: center;
   border: 0.5px solid rgba(199, 196, 196, 0.966);
-  height: 17rem;
+  height: 15rem;
   max-width: 13.5rem;
   padding: 0.5rem;
   text-align: center;
   font-family: "Caveat", cursive;
   font-size: 1.5rem;
   box-shadow: 4px 5px rgba(0, 0, 0, 0.2);
-  overflow-y: scroll;
-  overflow-x:hidden
+  overflow-y: auto;
+  overflow-x: hidden;
 }
