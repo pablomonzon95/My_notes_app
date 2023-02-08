@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+.noteDetail {
+  background-image: url("../../../public/img/notita.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 600px;
+  font-family: "Caveat", cursive;
+  align-items: center;
+  gap: 3rem;
+}
+.noteDetail h2 {
+  font-family: "Caveat", cursive;
+  margin-top: 6rem;
+  font-size: 4rem;
+}
+.noteDetail p {
+  font-size: 3rem;
+}
