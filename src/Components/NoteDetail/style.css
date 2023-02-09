@@ -2,20 +2,30 @@
 .noteDetail {
   background-image: url("../../../public/img/notita.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
   display: flex;
   flex-direction: column;
-  width: 600px;
-  height: 600px;
+  width: 60vw;
+  height: 80vh;
   font-family: "Caveat", cursive;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
+   text-align: center;
+   overflow-y: auto;
+   overflow-x: hidden;
 }
 .noteDetail h2 {
   font-family: "Caveat", cursive;
-  margin-top: 6rem;
-  font-size: 4rem;
+  margin-top: 3.8rem;
+  font-size: 2.5rem;
 }
 .noteDetail p {
-  font-size: 3rem;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 450px){
+  .noteDetail{
+    width:80vw;
+    height: 85vh;
+  }
 }

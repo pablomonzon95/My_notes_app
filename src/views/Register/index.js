@@ -26,17 +26,27 @@ export const Register = () => {
 
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post("http://localhost:8000/users", registerData);
-      swal(
-        "Registro exitoso",
-        "por favor revisa la casilla de correo para activar tu cuenta",
-        "success"
-      );
-      navigate(`/login`);
-    } catch (error) {
-      swal("An error has occured", error.response.data.message, "error");
+    const password1= e.target.password.value;
+    const password2= e.target.repetirpassword.value;
+
+    if (password1 === password2) {
+      try {
+        await axios.post("http://localhost:8000/users", registerData);
+        swal(
+          "Registro exitoso",
+          "por favor revisa la casilla de correo para activar tu cuenta",
+          "success"
+        );
+        navigate(`/login`);
+      } catch (error) {
+        swal("An error has occured", error.response.data.message, "error");
+      }
+    } else {
+      swal("paswords must be the same", 'please check them out', "error");
     }
+    
+    
+
   };
   return (
     <div className="formRegister">
@@ -47,8 +57,8 @@ export const Register = () => {
         textoBoton="Register"
       >
         <div className="extra-input">
-          <label htmlFor="repetiremail"> Repetir Contraseña</label>
-          <input type="password" id="repetiremail" name="repetiremail"></input>
+          <label htmlFor="repetipasswordId"> Repetir Contraseña</label>
+          <input type="password" id="repetirpasswordId" name="repetirpassword" ></input>
         </div>
       </Form>
       <Footer></Footer>
