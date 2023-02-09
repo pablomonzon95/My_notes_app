@@ -72,9 +72,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 Cosas por mejorar hasta ahora: 
+
 en la API: ver como crear una nota publica que al mismo tiempo tenga una imagen;
-ver como podemos pasar las imagenes para que al havcer fetch se cargue correctamente 
+
+ver como podemos pasar las imagenes para que al hacer fetch se cargue correctamente;
+mejorar la respuesta de usuario activado en la api;
 
 
 
-ver como podemos hacer que el input de confirmar contraseña sirva para algo.
+

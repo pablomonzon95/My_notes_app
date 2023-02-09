@@ -18,7 +18,7 @@ export const Register = () => {
 
   const handleInputChangeRegister = (e) => {
     let { name, value } = e.target;
-    if (name !== "repetir email") {
+    if (name !== "repeatpassword") {
       let newData = { ...registerData, [name]: value };
       setregisterData(newData);
     }
@@ -27,14 +27,14 @@ export const Register = () => {
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
     const password1= e.target.password.value;
-    const password2= e.target.repetirpassword.value;
+    const password2= e.target.repeatpassword.value;
 
     if (password1 === password2) {
       try {
         await axios.post("http://localhost:8000/users", registerData);
         swal(
-          "Registro exitoso",
-          "por favor revisa la casilla de correo para activar tu cuenta",
+          "Register Successful",
+          "please go to your email to activate your account",
           "success"
         );
         navigate(`/login`);
@@ -57,8 +57,8 @@ export const Register = () => {
         textoBoton="Register"
       >
         <div className="extra-input">
-          <label htmlFor="repetipasswordId"> Repetir Contraseña</label>
-          <input type="password" id="repetirpasswordId" name="repetirpassword" ></input>
+          <label htmlFor="repeatpasswordId"> Repetir Contraseña</label>
+          <input type="password" id="repeatpasswordId" name="repeatpassword" ></input>
         </div>
       </Form>
       <Footer></Footer>
