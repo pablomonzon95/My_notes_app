@@ -2,13 +2,14 @@ import "./style.css";
 
 import { useModal } from "../../context/ModalContext";
 import { NoteDetail } from "../NoteDetail";
-export const NotesSection = ({ title, publicNotes }) => {
+export const NotesSection = ({ title, Notes, NotesImages }) => {
   const [, setModal] = useModal();
+  console.log(NotesImages)
   return (
     <div className="notesPanel">
       <h1>{title}</h1>
       <ul>
-        {publicNotes.map((note) => {
+        {Notes.map((note) => {
           return (
             <li
               key={note.id}
@@ -23,7 +24,7 @@ export const NotesSection = ({ title, publicNotes }) => {
               }
             >
               <h3>{note.title}</h3>
-              {note.image && <img src={note.image} alt={note.title} />}
+              {NotesImages && <img src={NotesImages} alt={note.title} />}
               <p>{note.note}</p>
             </li>
           );
