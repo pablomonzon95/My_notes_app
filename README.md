@@ -77,13 +77,13 @@ en la API: ver como crear una nota publica que al mismo tiempo tenga una imagen;
 
 en frontend: 
 
-ver si podemos hacer algo mas de diseño en login y registro
+ver si podemos hacer algo mas de diseño en login y registro en pantalla grande
 
-mejorar la vista del not found y ponerle un enlace hacia el inicio
+mejorar la vista del not found y ponerle un enlace hacia el inicio.
 
-quitarle la imagen con el pin de backgroun y poner la original
-ponerle el pin posteriormente.
+buscar imagen sin fondo para el pin
 
+achicar header cuando la pantalla sea mas chica
 
 
 

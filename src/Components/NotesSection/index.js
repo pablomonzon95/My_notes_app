@@ -2,8 +2,14 @@ import "./style.css";
 
 import { useModal } from "../../context/ModalContext";
 import { NoteDetail } from "../NoteDetail";
-export const NotesSection = ({ title, publicNotes }) => {
+import { useNotes } from "../../hooks/useNotes"
+
+export const NotesSection = ({ title, notes }) => {
+  
+  const { UserNote, getNoteById} = useNotes();
   const [, setModal] = useModal();
+  
+
   const convertImage = (dataNumeric) => {
     const bytes = new Uint8Array(dataNumeric);
 
@@ -15,15 +21,23 @@ export const NotesSection = ({ title, publicNotes }) => {
 
     return url;
   };
+
   return (
     <div className="notesPanel">
       <h1>{title}</h1>
       <ul>
-        {publicNotes.map((note, index) => {
+        
+        {notes.map((note, index) => {
+        
           return (
             <li
               key={index}
-              onClick={() =>
+              onClick={() => {
+                getNoteById(note.id)
+              
+           
+             
+               
                 note.image ?
                 setModal(
                   <NoteDetail
@@ -41,17 +55,17 @@ export const NotesSection = ({ title, publicNotes }) => {
                     title={note.title}
                     note={note.note}
                   />
-                )
-              }
+                ) 
+              }}
             >
               <img className ="pin" src="/img/pin.jpg" alt="pin"></img>
-              <h3>{note.title}</h3>
+              <h3>{note.title ? note.title : note }</h3>
               {note.image && (
                 <img className="imagenNota" src={convertImage(note.imageData.data)} alt={note.title} />
               )}
-              <p>{note.note}</p>
+              <p>{note.note ? note.note : "click here for more details"}</p>
             </li>
-          );
+              );
         })}
       </ul>
     </div>

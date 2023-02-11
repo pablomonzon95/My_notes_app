@@ -1,6 +1,6 @@
 import "./style.css";
 import { NavLink } from "react-router-dom";
-export const Header = ({ tituloVista, children }) => {
+export const Header = ({ viewtitle, children }) => {
   return (
     <div className="header">
       <NavLink to="/">
@@ -10,7 +10,7 @@ export const Header = ({ tituloVista, children }) => {
         </div>
       </NavLink>
 
-      <h2>{tituloVista}</h2>
+      <h2>{viewtitle}</h2>
       <div className="buttonSection">{children}</div>
     </div>
   );
