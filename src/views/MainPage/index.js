@@ -8,8 +8,7 @@ import { Footer } from "../../Components/Footer";
 
 export const MainPage = () => {
   const navigate = useNavigate();
-  const { publicNotes, publicNotesImages } = useNotes();
-  
+  const { publicNotes } = useNotes();
 
   return (
     <div className="main_page">
@@ -19,8 +18,7 @@ export const MainPage = () => {
       </Header>
       <main className="main">
         <NotesSection
-          Notes={publicNotes}
-          NotesImages={publicNotesImages}
+          publicNotes={publicNotes}
           title="Forget about remember your important chores!"
         />
       </main>
