@@ -75,8 +75,14 @@ Cosas por mejorar hasta ahora:
 
 en la API: ver como crear una nota publica que al mismo tiempo tenga una imagen;
 
-ver como podemos pasar las imagenes para que al hacer fetch se cargue correctamente;
-mejorar la respuesta de usuario activado en la api;
+en frontend: 
+
+ver si podemos hacer algo mas de diseño en login y registro
+
+mejorar la vista del not found y ponerle un enlace hacia el inicio
+
+quitarle la imagen con el pin de backgroun y poner la original
+ponerle el pin posteriormente.
 
 
 

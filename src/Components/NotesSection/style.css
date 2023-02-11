@@ -17,7 +17,7 @@
   justify-content: center;
 }
 .notesPanel ul li {
-  background-image: url("../../../public/img/notita.jpg");
+  background-image: url("../../../public/img/papelsinpin.jpg");
   background-size: cover;
   cursor: pointer;
   display: flex;
@@ -36,10 +36,16 @@
   overflow-x: hidden;
   transition: 2s;
 }
-.notesPanel img {
-  width: 30%;
+.notesPanel img.imagenNota{
+  width: 75%;
+  border: 1px solid rgb(155, 152, 152);
+  border-radius: 10px;
 }
 
+.pin{
+  width: 15%
+}
+@media (min-width: 370px) {
 .notesPanel li:hover {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
@@ -47,6 +53,7 @@
   -o-transform: scale(1.2);
   transform: scale(1.2);
   transition: 2s;
+}
 }
 
 /* width */

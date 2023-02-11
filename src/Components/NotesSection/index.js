@@ -24,18 +24,30 @@ export const NotesSection = ({ title, publicNotes }) => {
             <li
               key={index}
               onClick={() =>
+                note.image ?
                 setModal(
                   <NoteDetail
-                    id={note.id}
+                    title={note.title}
+                    note={note.note}
+                 
+                    image={note.image}
+                    convertImage={convertImage}
+                    data = {note.imageData.data}
+                  />
+                )
+                :
+                setModal(
+                  <NoteDetail
                     title={note.title}
                     note={note.note}
                   />
                 )
               }
             >
+              <img className ="pin" src="/img/pin.jpg" alt="pin"></img>
               <h3>{note.title}</h3>
               {note.image && (
-                <img src={convertImage(note.imageData.data)} alt={note.title} />
+                <img className="imagenNota" src={convertImage(note.imageData.data)} alt={note.title} />
               )}
               <p>{note.note}</p>
             </li>
