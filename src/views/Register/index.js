@@ -26,8 +26,8 @@ export const Register = () => {
 
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
-    const password1= e.target.password.value;
-    const password2= e.target.repeatpassword.value;
+    const password1 = e.target.password.value;
+    const password2 = e.target.repeatpassword.value;
 
     if (password1 === password2) {
       try {
@@ -42,11 +42,8 @@ export const Register = () => {
         swal("An error has occured", error.response.data.message, "error");
       }
     } else {
-      swal("paswords must be the same", 'please check them out', "error");
+      swal("paswords must be the same", "please check them out", "error");
     }
-    
-    
-
   };
   return (
     <div className="formRegister">
@@ -58,7 +55,11 @@ export const Register = () => {
       >
         <div className="extra-input">
           <label htmlFor="repeatpasswordId"> Repetir Contraseña</label>
-          <input type="password" id="repeatpasswordId" name="repeatpassword" ></input>
+          <input
+            type="password"
+            id="repeatpasswordId"
+            name="repeatpassword"
+          ></input>
         </div>
       </Form>
       <Footer></Footer>

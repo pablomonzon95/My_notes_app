@@ -16,15 +16,17 @@ function App() {
   const [token] = useSession();
 
   useEffect(() => {
-    
-      if (token !== 'null' && (window.location.pathname.includes("login") || window.location.pathname === "/"|| window.location.pathname === "register")) {
-        window.location.pathname = "/panel" // No uso el navigate por estar fuera del provider de router
-      } else if (token === 'null' && (window.location.pathname.includes("panel"))) {
-        window.location.pathname = "/" 
-      }
-       
-    },
-   [token])
+    if (
+      token !== "null" &&
+      (window.location.pathname.includes("login") ||
+        window.location.pathname === "/" ||
+        window.location.pathname === "register")
+    ) {
+      window.location.pathname = "/panel"; // No uso el navigate por estar fuera del provider de router
+    } else if (token === "null" && window.location.pathname.includes("panel")) {
+      window.location.pathname = "/";
+    }
+  }, [token]);
   return (
     <div>
       <Routes>
@@ -32,7 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path='/panel' element={<UserPanel/>}/>
+        <Route path="/panel" element={<UserPanel />} />
       </Routes>
       {modal && <Modal>{modal}</Modal>}
     </div>

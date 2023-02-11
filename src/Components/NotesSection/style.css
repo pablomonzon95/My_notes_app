@@ -32,6 +32,41 @@
   font-family: "Caveat", cursive;
   font-size: 1.5rem;
   box-shadow: 4px 5px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden;
+  transition: 2s;
+}
+.notesPanel img {
+  width: 30%;
+}
+
+.notesPanel li:hover {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+  transition: 2s;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b1acac;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
