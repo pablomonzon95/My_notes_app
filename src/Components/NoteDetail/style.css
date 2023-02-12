@@ -2,7 +2,7 @@
 .noteDetail {
   background-image: url("../../../public/img/papelsinpin.jpg");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   width: 60vw;
@@ -10,32 +10,34 @@
   font-family: "Caveat", cursive;
   align-items: center;
   gap: 1rem;
-   text-align: center;
-   overflow-y: auto;
-   overflow-x: hidden;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .noteDetail h2 {
   font-family: "Caveat", cursive;
-  margin-top: 1.8rem;
-  font-size: 2.5rem;
+  padding-bottom: 2rem;
+  font-size: 4rem;
 }
 .noteDetail p {
-  font-size: 1.8rem;
+  padding: 1rem 3rem 3rem 3rem;
+  font-size: 2.5rem;
 }
 
-@media (max-width: 450px){
-  .noteDetail{
-    width:80vw;
+@media (max-width: 450px) {
+  .noteDetail {
+    width: 80vw;
     height: 85vh;
   }
 }
 
 .imagenNota {
-  width: 55%;
+  width: 45%;
   border: 1px solid rgb(155, 152, 152);
   border-radius: 10px;
 }
 
-.pin {
-  width: 15%
+.pinDetail {
+  padding-top: 1.5rem;
+  width: 10%;
 }

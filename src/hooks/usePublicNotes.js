@@ -6,7 +6,9 @@ export const usePublicNotes = () => {
   useEffect(() => {
     const getPublicNotes = async () => {
       try {
-        const { data } = await axios.get("http://localhost:8000/public");
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_BACKEND}/public`
+        );
         setPublicNotes(data.data);
       } catch (e) {
         console.error(e.message);

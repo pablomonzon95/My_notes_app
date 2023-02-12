@@ -33,8 +33,8 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="*" element={<ErrorPage />} />
         <Route path="/panel" element={<UserPanel />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       {modal && <Modal>{modal}</Modal>}
     </div>
