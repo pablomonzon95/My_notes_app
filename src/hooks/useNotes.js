@@ -41,8 +41,8 @@ export const useNotes = () => {
     );
     const data = response.data.data;
 
-    setUserNote(...[data]);
-    console.log(UserNote);
+    setUserNote(data);
+    /* console.log(UserNote); */
   };
 
   return { Notes, setNotes, getNoteById, UserNote, setUserNote };

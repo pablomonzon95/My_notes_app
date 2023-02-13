@@ -20,7 +20,8 @@ function App() {
       token !== "null" &&
       (window.location.pathname.includes("login") ||
         window.location.pathname === "/" ||
-        window.location.pathname === "register")
+        window.location.pathname === "register" ||
+        window.location.pathname === "")
     ) {
       window.location.pathname = "/panel"; // No uso el navigate por estar fuera del provider de router
     } else if (token === "null" && window.location.pathname.includes("panel")) {

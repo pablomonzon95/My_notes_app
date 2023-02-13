@@ -7,7 +7,7 @@ import { useNotes } from "../../hooks/useNotes";
 export const NotesSection = ({ title, notes }) => {
   const { UserNote, getNoteById } = useNotes();
   const [, setModal] = useModal();
-
+  console.log(UserNote.note);
   const convertImage = (dataNumeric) => {
     const bytes = new Uint8Array(dataNumeric);
 
@@ -24,10 +24,10 @@ export const NotesSection = ({ title, notes }) => {
     <div className="notesPanel">
       <h1>{title}</h1>
       <ul>
-        {notes.map((note, index) => {
+        {notes.map((note) => {
           return (
             <li
-              key={index}
+              key={note.id}
               onClick={() => {
                 getNoteById(note.id);
 
