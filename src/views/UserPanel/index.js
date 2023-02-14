@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { AddNoteForm } from "../../Components/AddNoteForm";
 import { Header } from "../../Components/Header";
 import { NotesSection } from "../../Components/NotesSection";
@@ -5,7 +6,10 @@ import { useSession } from "../../context/sessionToken";
 import { useNotes } from "../../hooks/useNotes";
 
 export const UserPanel = () => {
-  const { Notes } = useNotes();
+  const { Notes, getNotes } = useNotes();
+  useEffect(()=> {
+  getNotes()
+  }, [])
 
   const [, , logout] = useSession();
   return (

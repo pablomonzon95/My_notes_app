@@ -1,12 +1,23 @@
 import { useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
+
 export const useNotes = () => {
   const [Notes, setNotes] = useState([]);
-  const [UserNote, setUserNote] = useState({});
+  const [UserNote, setUserNote] = useState({
+    id: "",
+    title:"",
+    note:"",
+    image:"",
+    imageId: "",
+    imageData:"",
+    public:"",
+    userId:"",
+    categoryId:""
+
+  });
 
   const token = `Bearer ${localStorage.getItem("token")}`;
-  useEffect(() => {
+
     const getNotes = async () => {
       const token = `Bearer ${localStorage.getItem("token")}`;
 
@@ -22,15 +33,15 @@ export const useNotes = () => {
             }
           );
           setNotes(data.data);
+          
         } catch (e) {
           console.error(e.message);
         }
       }
     };
-    getNotes();
-  }, []);
+  
 
-  const getNoteById = async (id) => {
+  const getNote = async (id) => {
     const response = await axios.get(
       `${process.env.REACT_APP_BACKEND}/note/${id}`,
       {
@@ -39,11 +50,11 @@ export const useNotes = () => {
         },
       }
     );
-    const data = response.data.data;
-
-    setUserNote(data);
-    /* console.log(UserNote); */
+    console.log(response.data.data)
+    setUserNote({...UserNote,...response.data.data});
+ 
+ 
   };
 
-  return { Notes, setNotes, getNoteById, UserNote, setUserNote };
+  return { Notes, setNotes, getNotes, getNote, UserNote, setUserNote };
 };

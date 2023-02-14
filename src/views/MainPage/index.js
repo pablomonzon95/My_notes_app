@@ -12,7 +12,7 @@ export const MainPage = () => {
   const { publicNotes, getPublicNotes } = usePublicNotes();
   useEffect(() => {
     getPublicNotes();
-  }, []);
+  },[]);
 
   return (
     <div className="main_page">

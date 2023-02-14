@@ -2,12 +2,12 @@ import "./style.css";
 
 import { useModal } from "../../context/ModalContext";
 import { NoteDetail } from "../NoteDetail";
-import { useNotes } from "../../hooks/useNotes";
+
 
 export const NotesSection = ({ title, notes }) => {
-  const { UserNote, getNoteById } = useNotes();
+ 
   const [, setModal] = useModal();
-  console.log(UserNote.note);
+
   const convertImage = (dataNumeric) => {
     const bytes = new Uint8Array(dataNumeric);
 
@@ -25,13 +25,17 @@ export const NotesSection = ({ title, notes }) => {
       <h1>{title}</h1>
       <ul>
         {notes.map((note) => {
+
+          let convertedImage= "";
+          if(note.image) {
+          convertedImage = convertImage(note.imageData.data)}
           return (
             <li
               key={note.id}
               onClick={() => {
                 note.image
                   ? setModal(
-                      <NoteDetail id={note.id} convertImage={convertImage} />
+                      <NoteDetail id={note.id} convertedImage={convertedImage} />
                     )
                   : setModal(<NoteDetail id={note.id} />);
               }}
@@ -41,7 +45,7 @@ export const NotesSection = ({ title, notes }) => {
               {note.image && (
                 <img
                   className="imagenNota"
-                  src={convertImage(note.imageData.data)}
+                  src={convertedImage}
                   alt={note.title}
                 />
               )}

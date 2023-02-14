@@ -1,15 +1,31 @@
 import { useState } from "react";
 import axios from "axios";
-import { useEffect } from "react";
+
 export const usePublicNotes = () => {
   const [publicNotes, setPublicNotes] = useState([]);
-  const [publicNote, setPublicNote] = useState({});
+  const [publicNote, setPublicNote] = useState({
+    id: "",
+    title:"",
+    note:"",
+    image:"",
+    imageId: "",
+    imageData:"",
+    public:"",
+    userId:"",
+    categoryId:""
+
+  });
+  
   const getPublicNote = async (id) => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/public/${id}`
       );
-      setPublicNote(response);
+      
+      setPublicNote({...publicNote, ...response.data.data});
+    
+
+     
     } catch (e) {
       console.error(e.message);
     }
