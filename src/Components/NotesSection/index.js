@@ -29,21 +29,11 @@ export const NotesSection = ({ title, notes }) => {
             <li
               key={note.id}
               onClick={() => {
-                getNoteById(note.id);
-
                 note.image
                   ? setModal(
-                      <NoteDetail
-                        title={note.title}
-                        note={note.note}
-                        image={note.image}
-                        convertImage={convertImage}
-                        data={note.imageData.data}
-                      />
+                      <NoteDetail id={note.id} convertImage={convertImage} />
                     )
-                  : setModal(
-                      <NoteDetail title={note.title} note={note.note} />
-                    );
+                  : setModal(<NoteDetail id={note.id} />);
               }}
             >
               <img className="pin" src="/img/pin.png" alt="pin"></img>

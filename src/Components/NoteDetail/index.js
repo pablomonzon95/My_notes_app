@@ -1,13 +1,18 @@
+import { useEffect } from "react";
 import "./style.css";
-export const NoteDetail = ({ title, note, image, convertImage, data }) => {
+import { usePublicNotes } from "../../hooks/usePublicNotes";
+export const NoteDetail = ({ id, convertImage }) => {
+  const { getPublicNote, publicNote } = usePublicNotes();
+
+  useEffect(() => {
+    getPublicNote(id);
+  }, []);
+  console.log(publicNote);
   return (
     <div className="noteDetail">
       <img className="pinDetail" src="/img/pin.png" alt="pin"></img>
-      <h2>{title}</h2>
-      {image && (
-        <img className="imagenNota" src={convertImage(data)} alt={title} />
-      )}
-      <p>{note}</p>
+      <h2>hola</h2>
+      {/* <image src={convertImage(publicNote.data.data.imageId)}></image> */}
     </div>
   );
 };

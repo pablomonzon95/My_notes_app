@@ -4,34 +4,60 @@ import axios from "axios";
 import { useNotes } from "../../hooks/useNotes";
 export const AddNoteForm = () => {
   const { Notes, setNotes } = useNotes();
-  const [addNoteData, setaddNoteData] = useState({
-    title: "",
-    note: "",
-    public: false,
-    categoryId: "",
-  });
-  const handleInputChangeAddNoteData = (e) => {
-    let { name, value } = e.target;
-    let newData = { ...addNoteData, [name]: value };
-    setaddNoteData(newData);
-  };
+
+  // const [addNoteData, setaddNoteData] = useState({
+  //   title: "",
+  //   note: "",
+  //   public: false,
+  //   categoryId: "",
+  // });
+  // const handleInputChangeAddNoteData = (e) => {
+  //   let { name, value } = e.target;
+  //   let newData = { ...addNoteData, [name]: value };
+  //   setaddNoteData(newData);
+  // };
+
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
+
+    const form = e.target;
     const token = `Bearer ${localStorage.getItem("token")}`;
-    console.log(token);
+    const payload = new FormData(form);
+
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND}/notes`,
-        addNoteData,
+        payload,
         {
           headers: {
+            "Content-Type": "multipart/form-data",
             authorization: token,
           },
         }
       );
+
+      console.log(data);
+
+      form.reset();
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");
     }
+
+    // const token = `Bearer ${localStorage.getItem("token")}`;
+    // console.log(token);
+    // try {
+    //   const { data } = await axios.post(
+    //     `${process.env.REACT_APP_BACKEND}/notes`,
+    //     addNoteData,
+    //     {
+    //       headers: {
+    //         authorization: token,
+    //       },
+    //     }
+    //   );
+    // } catch (error) {
+    //   swal("An error has occured", error.response.data.message, "error");
+    // }
   };
 
   return (
@@ -42,7 +68,7 @@ export const AddNoteForm = () => {
         name="title"
         id="title"
         required
-        onChange={handleInputChangeAddNoteData}
+        // onChange={handleInputChangeAddNoteData}
       ></input>
       <label htmlFor="note">Note</label>
       <input
@@ -50,14 +76,14 @@ export const AddNoteForm = () => {
         name="note"
         id="note"
         required
-        onChange={handleInputChangeAddNoteData}
+        // onChange={handleInputChangeAddNoteData}
       ></input>
       <label htmlFor="public">Public?</label>
       <input
         type="checkbox"
         name="public"
         id="public"
-        onChange={handleInputChangeAddNoteData}
+        // onChange={handleInputChangeAddNoteData}
       ></input>
       {/* <label htmlFor="categoryId">Category</label> */}
       <input
@@ -65,14 +91,14 @@ export const AddNoteForm = () => {
         required
         name="categoryId"
         id="categoryId"
-        onChange={handleInputChangeAddNoteData}
+        // onChange={handleInputChangeAddNoteData}
       ></input>
       <label htmlFor="addImage"></label>
       <input
         type="file"
-        name="addImage"
+        name="image"
         id="addImage"
-        onChange={handleInputChangeAddNoteData}
+        // onChange={handleInputChangeAddNoteData}
       ></input>
       <button type="submit">Send</button>
     </form>
