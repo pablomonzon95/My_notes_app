@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
-.noteDetail {
+.note_detail {
   background-image: url("../../../public/img/papelsinpin.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -14,18 +14,18 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
-.noteDetail h2 {
+.note_detail h2 {
   font-family: "Caveat", cursive;
   padding-bottom: 2rem;
   font-size: 4rem;
 }
-.noteDetail p {
+.note_detail p {
   padding: 1rem 3rem 3rem 3rem;
   font-size: 2.5rem;
 }
 
 @media (max-width: 450px) {
-  .noteDetail {
+  .note_detail {
     width: 80vw;
     height: 85vh;
   }

@@ -1,27 +1,25 @@
 import { useEffect } from "react";
 import "./style.css";
 import { usePublicNotes } from "../../hooks/usePublicNotes";
-import { useNotes } from "../../hooks/useNotes";
-export const NoteDetail = ({ id, convertedImage }) => {
+import  convertImage  from "../../Utils/convertImage";
+export const NoteDetail = ({ id }) => {
 
-  const { getPublicNote, publicNote } = usePublicNotes();
-  const {getNote, UserNote} = useNotes();
+  const { getNote, publicNote } = usePublicNotes();
+ 
   
   useEffect(() => {
-    getPublicNote(id);
-  }, []);
-
-  useEffect(() => {
     getNote(id);
-  }, []);
+    //eslint-disable-next-line
+  },  [] );
 
+ console.log(publicNote)
 
 
   return (
-    <div className="noteDetail">
+    <div className="note_detail">
       <img className="pinDetail" src="/img/pin.png" alt="pin"></img>
       <h2>{publicNote.title}</h2>
-      <img className="imageNota" src={convertedImage} alt={publicNote.title }></img> 
+      { publicNote.imageData && <img className="imageNota" src={ convertImage(publicNote.imageData.data)} alt={publicNote.title }></img> }
       <p>{publicNote.note}</p>
     </div>
   );

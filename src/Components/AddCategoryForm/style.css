@@ -1,0 +1,15 @@
+.category_form {
+    background-image: url("../../../public/img/papelsinpin.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: 80vh;
+  font-family: "Caveat", cursive;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

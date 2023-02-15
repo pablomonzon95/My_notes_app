@@ -1,21 +1,26 @@
-import { useState } from "react";
+
 import swal from "sweetalert";
 import axios from "axios";
-import { useNotes } from "../../hooks/useNotes";
-export const AddNoteForm = () => {
-  const { Notes, setNotes } = useNotes();
+import { useEffect, useState} from "react"
+import { getCategories } from "../../services/categories";
 
-  // const [addNoteData, setaddNoteData] = useState({
-  //   title: "",
-  //   note: "",
-  //   public: false,
-  //   categoryId: "",
-  // });
-  // const handleInputChangeAddNoteData = (e) => {
-  //   let { name, value } = e.target;
-  //   let newData = { ...addNoteData, [name]: value };
-  //   setaddNoteData(newData);
-  // };
+export const AddNoteForm = () => {
+
+  const [categories, setCategories] = useState([])
+  
+
+  useEffect(() => {
+    const loadCategories = async () =>{
+     const results = await  getCategories()
+     setCategories(results.data.data)
+    }
+    
+    loadCategories();
+  }, [])
+ 
+  console.log(categories)
+
+
 
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
@@ -43,21 +48,7 @@ export const AddNoteForm = () => {
       swal("An error has occured", error.response.data.message, "error");
     }
 
-    // const token = `Bearer ${localStorage.getItem("token")}`;
-    // console.log(token);
-    // try {
-    //   const { data } = await axios.post(
-    //     `${process.env.REACT_APP_BACKEND}/notes`,
-    //     addNoteData,
-    //     {
-    //       headers: {
-    //         authorization: token,
-    //       },
-    //     }
-    //   );
-    // } catch (error) {
-    //   swal("An error has occured", error.response.data.message, "error");
-    // }
+  
   };
 
   return (
@@ -68,7 +59,7 @@ export const AddNoteForm = () => {
         name="title"
         id="title"
         required
-        // onChange={handleInputChangeAddNoteData}
+       
       ></input>
       <label htmlFor="note">Note</label>
       <input
@@ -76,29 +67,32 @@ export const AddNoteForm = () => {
         name="note"
         id="note"
         required
-        // onChange={handleInputChangeAddNoteData}
+
       ></input>
       <label htmlFor="public">Public?</label>
       <input
         type="checkbox"
         name="public"
         id="public"
-        // onChange={handleInputChangeAddNoteData}
+     
       ></input>
-      {/* <label htmlFor="categoryId">Category</label> */}
-      <input
-        type="number"
+      <label htmlFor="categoryId">Category</label>
+      <select
+      
         required
         name="categoryId"
         id="categoryId"
-        // onChange={handleInputChangeAddNoteData}
-      ></input>
+      
+      >
+      {categories.map((category) => {
+        return <option>{category.name}</option>
+      })}
+      </select>
       <label htmlFor="addImage"></label>
       <input
         type="file"
         name="image"
         id="addImage"
-        // onChange={handleInputChangeAddNoteData}
       ></input>
       <button type="submit">Send</button>
     </form>

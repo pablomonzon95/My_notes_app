@@ -73,7 +73,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Cosas por mejorar hasta ahora: 
 
-en la API: ver como crear una nota publica que al mismo tiempo tenga una imagen;
 
 en frontend: 
 
@@ -81,9 +80,17 @@ ver si podemos hacer algo mas de diseño en login y registro en pantalla grande
 
 mejorar la vista del not found y ponerle un enlace hacia el inicio.
 
-buscar imagen sin fondo para el pin
-
 achicar header cuando la pantalla sea mas chica
 
+cambiar fondo de pantalla al hacer mas chica de 500 px la pantalla
+
+estilar formulario de añadir nota
+
+// comentar el codigo 
+
+//hacer carpeta de servicios
+
+//clases deben ir todas en minuscula separadas con guiomn bajo
+// revisar de usar las mismas comillas dobles "".
 
 

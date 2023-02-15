@@ -2,23 +2,14 @@ import "./style.css";
 
 import { useModal } from "../../context/ModalContext";
 import { NoteDetail } from "../NoteDetail";
+import  convertImage  from "../../Utils/convertImage";
 
 
 export const NotesSection = ({ title, notes }) => {
  
   const [, setModal] = useModal();
 
-  const convertImage = (dataNumeric) => {
-    const bytes = new Uint8Array(dataNumeric);
-
-    // Convertir los bytes a un blob
-    const myBlob = new Blob([bytes], { type: "image/jpg" });
-
-    // Obtener el url
-    var url = URL.createObjectURL(myBlob);
-
-    return url;
-  };
+  
 
   return (
     <div className="notesPanel">
@@ -35,7 +26,7 @@ export const NotesSection = ({ title, notes }) => {
               onClick={() => {
                 note.image
                   ? setModal(
-                      <NoteDetail id={note.id} convertedImage={convertedImage} />
+                      <NoteDetail id={note.id}  />
                     )
                   : setModal(<NoteDetail id={note.id} />);
               }}

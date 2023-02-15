@@ -16,7 +16,7 @@ export const usePublicNotes = () => {
 
   });
   
-  const getPublicNote = async (id) => {
+  const getNote = async (id) => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND}/public/${id}`
@@ -45,7 +45,7 @@ export const usePublicNotes = () => {
   return {
     publicNotes,
     setPublicNotes,
-    getPublicNote,
+    getNote,
     publicNote,
     getPublicNotes,
   };
