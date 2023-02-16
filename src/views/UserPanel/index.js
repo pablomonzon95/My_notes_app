@@ -11,6 +11,7 @@ export const UserPanel = () => {
   const [, setModal] = useModal();
 
   const { Notes, getNotes } = useNotes();
+
   useEffect(() => {
     getNotes();
     // eslint-disable-next-line
@@ -22,7 +23,6 @@ export const UserPanel = () => {
       <Header viewtitle="This is you personal panel">
         <button
           onClick={() => {
-            console.log("estoy haciendo click");
             setModal(<AddCategoryForm />);
           }}
         >

@@ -17,7 +17,7 @@ export const Header = ({ viewtitle, children }) => {
         </div>}
 
       <h2>{viewtitle}</h2>
-      <div className="buttonSection">{children}</div>
+      <div className="button_section">{children}</div>
     </div>
   );
 };

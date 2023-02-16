@@ -1,4 +1,4 @@
-div.modalBg {
+div.modal_big {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -10,7 +10,7 @@ div.modalBg {
   justify-content: center;
 }
 
-div.modalBg > div {
+div.modal_big > div {
   background-color: white;
   border: 2px solid rgba(60, 60, 60, 0.8);
 }

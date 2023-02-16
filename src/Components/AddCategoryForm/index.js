@@ -1,6 +1,6 @@
 import "./style.css";
 import swal from "sweetalert";
-import axios from "axios";
+import { postCategoryService } from "../../services/categories";
 import { useModal } from "../../context/ModalContext";
 export const AddCategoryForm = () => {
   const [, setModal] = useModal();
@@ -9,17 +9,11 @@ export const AddCategoryForm = () => {
     e.preventDefault();
 
     const form = e.target;
-    const token = `Bearer ${localStorage.getItem("token")}`;
+    
     const payload = new FormData(form);
 
     try {
-      await axios.post(`${process.env.REACT_APP_BACKEND}/categories`, payload, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          authorization: token,
-        },
-      });
-
+      postCategoryService(payload)
       form.reset();
       setModal(null);
     } catch (error) {

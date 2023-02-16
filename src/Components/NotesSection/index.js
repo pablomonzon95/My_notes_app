@@ -12,7 +12,7 @@ export const NotesSection = ({ title, notes }) => {
   
 
   return (
-    <div className="notesPanel">
+    <div className="notes_panel">
       <h1>{title}</h1>
       <ul>
         {notes.map((note) => {
@@ -35,7 +35,7 @@ export const NotesSection = ({ title, notes }) => {
               <h3>{note.title ? note.title : note}</h3>
               {note.image && (
                 <img
-                  className="imagenNota"
+                  className="imagen_nota"
                   src={convertedImage}
                   alt={note.title}
                 />

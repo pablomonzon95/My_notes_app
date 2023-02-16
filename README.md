@@ -86,11 +86,14 @@ cambiar fondo de pantalla al hacer mas chica de 500 px la pantalla
 
 estilar formulario de añadir nota
 
+estilar formulario de añadir categoria
+
 // comentar el codigo 
 
 //hacer carpeta de servicios
 
-//clases deben ir todas en minuscula separadas con guiomn bajo
+//clases deben ir todas en minuscula separadas con guion bajo
+
 // revisar de usar las mismas comillas dobles "".
 
 

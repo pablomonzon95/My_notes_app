@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { getNotesService } from "../services/notes";
 
 export const useNotes = () => {
   const [Notes, setNotes] = useState([]);
@@ -11,21 +11,18 @@ export const useNotes = () => {
 
       if (token !== "Bearer null") {
         try {
-          const token = `Bearer ${localStorage.getItem("token")}`;
-          const { data } = await axios.get(
-            `${process.env.REACT_APP_BACKEND}/notes`,
-            {
-              headers: {
-                authorization: token,
-              },
-            }
-          );
-          setNotes(data.data);
+          
+         const response = await getNotesService()
+        
+         setNotes(response.data.data)
+       
           
         } catch (e) {
           console.error(e.message);
-        }
+        } 
+      
       }
+     
     };
   
 

@@ -1,8 +1,9 @@
 import "./style.css";
 import swal from "sweetalert";
-import axios from "axios";
+
 import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
+import { postNoteService } from "../../services/notes";
 
 export const AddNoteForm = () => {
   const [categories, setCategories] = useState([]);
@@ -14,29 +15,19 @@ export const AddNoteForm = () => {
     };
 
     loadCategories();
-  }, []);
+  }, [categories]);
 
-  console.log(categories);
+
 
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
 
     const form = e.target;
-    const token = `Bearer ${localStorage.getItem("token")}`;
     const payload = new FormData(form);
 
     try {
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_BACKEND}/notes`,
-        payload,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            authorization: token,
-          },
-        }
-      );
-      console.log(data);
+      postNoteService(payload)
+
       form.reset();
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");
@@ -44,7 +35,7 @@ export const AddNoteForm = () => {
   };
 
   return (
-    <div className="noteForm">
+    <div className="note_form">
       <form onSubmit={handleSubmitaddNoteData}>
         <label htmlFor="title">Title</label>
         <input type="text" name="title" id="title" required></input>
@@ -55,7 +46,7 @@ export const AddNoteForm = () => {
         <label htmlFor="categoryId">Category</label>
         <select required name="categoryId" id="categoryId">
           {categories.map((category) => {
-            return <option value={category.id}>{category.name}</option>;
+            return <option key={category.id} value={category.id}>{category.name}</option>;
           })}
         </select>
         <label htmlFor="addImage"></label>

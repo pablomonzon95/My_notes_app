@@ -31,13 +31,13 @@
   }
 }
 
-.imageNota {
+.image_nota {
   width: 45%;
   border: 1px solid rgb(155, 152, 152);
   border-radius: 10px;
 }
 
-.pinDetail {
+.pin_detail {
   padding-top: 1.5rem;
   width: 10%;
 }

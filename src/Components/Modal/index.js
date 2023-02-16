@@ -4,7 +4,7 @@ const Modal = ({ children }) => {
   const [, setModal] = useModal();
 
   return (
-    <div className="modalBg" onClick={() => setModal(null)}>
+    <div className="modal_big" onClick={() => setModal(null)}>
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </div>
   );
