@@ -1,26 +1,22 @@
-
+import "./style.css";
 import swal from "sweetalert";
 import axios from "axios";
-import { useEffect, useState} from "react"
-import { getCategories } from "../../services/categories";
+import { useEffect, useState } from "react";
+import { getCategoriesService } from "../../services/categories";
 
 export const AddNoteForm = () => {
-
-  const [categories, setCategories] = useState([])
-  
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const loadCategories = async () =>{
-     const results = await  getCategories()
-     setCategories(results.data.data)
-    }
-    
+    const loadCategories = async () => {
+      const results = await getCategoriesService();
+      setCategories(results.data.data);
+    };
+
     loadCategories();
-  }, [])
- 
-  console.log(categories)
+  }, []);
 
-
+  console.log(categories);
 
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
@@ -40,61 +36,32 @@ export const AddNoteForm = () => {
           },
         }
       );
-
       console.log(data);
-
       form.reset();
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");
     }
-
-  
   };
 
   return (
-    <form onSubmit={handleSubmitaddNoteData}>
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        required
-       
-      ></input>
-      <label htmlFor="note">Note</label>
-      <input
-        type="text"
-        name="note"
-        id="note"
-        required
-
-      ></input>
-      <label htmlFor="public">Public?</label>
-      <input
-        type="checkbox"
-        name="public"
-        id="public"
-     
-      ></input>
-      <label htmlFor="categoryId">Category</label>
-      <select
-      
-        required
-        name="categoryId"
-        id="categoryId"
-      
-      >
-      {categories.map((category) => {
-        return <option>{category.name}</option>
-      })}
-      </select>
-      <label htmlFor="addImage"></label>
-      <input
-        type="file"
-        name="image"
-        id="addImage"
-      ></input>
-      <button type="submit">Send</button>
-    </form>
+    <div className="noteForm">
+      <form onSubmit={handleSubmitaddNoteData}>
+        <label htmlFor="title">Title</label>
+        <input type="text" name="title" id="title" required></input>
+        <label htmlFor="note">Note</label>
+        <input type="text" name="note" id="note" required></input>
+        <label htmlFor="public">Public?</label>
+        <input type="checkbox" name="public" id="public"></input>
+        <label htmlFor="categoryId">Category</label>
+        <select required name="categoryId" id="categoryId">
+          {categories.map((category) => {
+            return <option value={category.id}>{category.name}</option>;
+          })}
+        </select>
+        <label htmlFor="addImage"></label>
+        <input type="file" name="image" id="addImage"></input>
+        <button type="submit">Send</button>
+      </form>
+    </div>
   );
 };

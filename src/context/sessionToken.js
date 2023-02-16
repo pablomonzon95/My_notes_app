@@ -1,22 +1,23 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 const SessionContext = createContext(null);
 
 const SessionProvider = ({ children }) => {
-  const navigate = useNavigate()
- 
-    const [token, setToken] =useState(localStorage.getItem('token'));
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        localStorage.setItem('token', token)
-    }, [token])
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
-    const logout = () => {
-        setToken(null)
-        localStorage.removeItem("token")
-        navigate(`/`)
-    }
+  useEffect(() => {
+    localStorage.setItem("token", token);
+  }, [token]);
+
+  const logout = () => {
+    console.log("adios");
+    setToken(null);
+    localStorage.removeItem("token");
+
+    navigate(`/`);
+  };
 
   return (
     <SessionContext.Provider value={[token, setToken, logout]}>
@@ -29,4 +30,4 @@ const useSession = () => {
   return useContext(SessionContext);
 };
 
-export {SessionProvider, useSession};
+export { SessionProvider, useSession };

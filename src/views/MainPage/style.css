@@ -1,6 +1,6 @@
 .main_page {
   min-height: 100vh;
-  background-image: url("../../../public/img/fondo.png");
+  background-color: #e1eaf0;
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
