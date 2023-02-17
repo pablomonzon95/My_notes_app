@@ -78,15 +78,13 @@ en frontend:
 
 ver si podemos hacer algo mas de diseño en login y registro en pantalla grande
 
-mejorar la vista del not found y ponerle un enlace hacia el inicio.
-
 achicar header cuando la pantalla sea mas chica
-
-cambiar fondo de pantalla al hacer mas chica de 500 px la pantalla
 
 estilar formulario de añadir nota
 
 estilar formulario de añadir categoria
+
+al crear una nota que se agregue automaticamente al panel user (si lo hago como en categorias me da bucle infinito)
 
 // comentar el codigo 
 

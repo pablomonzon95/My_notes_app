@@ -1,12 +1,12 @@
 .user_panel {
   min-height: 100vh;
-  background-color: #e1eaf0;
+  background-image: url("../../../public/img/fondo.png") ;
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
   display: flex;
   flex-direction: column;
-  padding-left: 1rem;
+  padding-left: 2.2rem;
 }
 .user_panel > main {
   display: flex;

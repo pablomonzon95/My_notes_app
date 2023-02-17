@@ -40,7 +40,7 @@ export const Login = () => {
 
   return (
     <div className="form_login">
-      <Header tituloVista="Login"></Header>
+      <Header viewtitle="Login"></Header>
       <Form
         handleInputChangeFunction={handleInputChangeLogin}
         handleSubmitFunction={handleSubmitLogin}

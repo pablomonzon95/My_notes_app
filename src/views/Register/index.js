@@ -47,7 +47,7 @@ export const Register = () => {
   };
   return (
     <div className="form_register">
-      <Header tituloVista="Register"></Header>
+      <Header viewtitle="Register"></Header>
       <Form
         handleInputChangeFunction={handleInputChangeRegister}
         handleSubmitFunction={handleSubmitRegister}
