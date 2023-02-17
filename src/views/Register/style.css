@@ -1,4 +1,4 @@
-.formRegister {
+.form_register {
   background-color: #e1eaf0;
   display: flex;
   flex-direction: column;
@@ -6,22 +6,22 @@
   min-height: 100vh;
 }
 
-.formRegister form {
+.form_register form {
   padding-top: 3rem;
   flex-grow: 1;
 }
 
-.extra-input {
+.extra_input {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.extra-input label {
+.extra_input label {
   padding-bottom: 1rem;
   font-family: "Lobster", cursive;
   font-size: 2rem;
 }
-.extra-input input {
+.extra_input input {
   background-color: white;
   border: none;
   text-align: center;

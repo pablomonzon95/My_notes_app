@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import { getNoteService, getPublicNotesService } from "../services/notes";
 
 export const usePublicNotes = () => {
   const [publicNotes, setPublicNotes] = useState([]);
@@ -18,13 +18,9 @@ export const usePublicNotes = () => {
   
   const getNote = async (id) => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/public/${id}`
-      );
-      
-      setPublicNote({...publicNote, ...response.data.data});
-    
+      const response = getNoteService(id)
 
+      setPublicNote({...publicNote, ...response.data.data});
      
     } catch (e) {
       console.error(e.message);
@@ -33,10 +29,8 @@ export const usePublicNotes = () => {
 
   const getPublicNotes = async () => {
     try {
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND}/public`
-      );
-      setPublicNotes(data.data);
+      const response = await getPublicNotesService()
+      setPublicNotes(response.data.data);
     } catch (e) {
       console.error(e.message);
     }

@@ -6,6 +6,7 @@ import { NotesSection } from "../../Components/NotesSection";
 import { useSession } from "../../context/sessionToken";
 import { useNotes } from "../../hooks/useNotes";
 import { useModal } from "../../context/ModalContext";
+import "./style.css"
 
 export const UserPanel = () => {
   const [, setModal] = useModal();
@@ -19,7 +20,7 @@ export const UserPanel = () => {
 
   const [, , logout] = useSession();
   return (
-    <div className="userPanel">
+    <div className="user_panel">
       <Header viewtitle="This is you personal panel">
         <button
           onClick={() => {

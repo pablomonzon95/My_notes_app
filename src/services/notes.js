@@ -22,4 +22,18 @@ export const postNoteService = async (payload) => {
       );
       return response;
   }
+
+  export const getNoteService = async(id) => {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND}/public/${id}`)
+      return response;
+  }
+
+  export const getPublicNotesService = async() => {
+   
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND}/public`
+      );
+      return response;
+  }
   

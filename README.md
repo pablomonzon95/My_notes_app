@@ -90,10 +90,9 @@ estilar formulario de añadir categoria
 
 // comentar el codigo 
 
-//hacer carpeta de servicios
 
-//clases deben ir todas en minuscula separadas con guion bajo
 
-// revisar de usar las mismas comillas dobles "".
+
+
 
 

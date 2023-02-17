@@ -1,11 +1,11 @@
-.formLogin {
+.form_login {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
 }
 
-.formLogin form {
+.form_login form {
   padding-top: 3rem;
   flex-grow: 1;
 }

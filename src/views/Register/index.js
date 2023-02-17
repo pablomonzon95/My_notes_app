@@ -1,12 +1,12 @@
 import "./style.css";
 import swal from "sweetalert";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Form } from "../../Components/Form";
 import { Header } from "../../Components/Header";
 import { Footer } from "../../Components/Footer";
+import { registerService } from "../../services/users";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ export const Register = () => {
 
     if (password1 === password2) {
       try {
-        await axios.post("http://localhost:8000/users", registerData);
+        await registerService(registerData)
         swal(
           "Register Successful",
           "please go to your email to activate your account",
@@ -46,14 +46,14 @@ export const Register = () => {
     }
   };
   return (
-    <div className="formRegister">
+    <div className="form_register">
       <Header tituloVista="Register"></Header>
       <Form
         handleInputChangeFunction={handleInputChangeRegister}
         handleSubmitFunction={handleSubmitRegister}
         textoBoton="Register"
       >
-        <div className="extra-input">
+        <div className="extra_input">
           <label htmlFor="repeatpasswordId"> Repetir Contraseña</label>
           <input
             type="password"

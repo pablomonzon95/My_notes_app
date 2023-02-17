@@ -1,3 +1,21 @@
-.userPanel {
+.user_panel {
+  min-height: 100vh;
   background-color: #e1eaf0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+.user_panel > main {
+  display: flex;
+  width: 99vw;
+
+  justify-content: center;
+  align-items: flex-start;
+  flex-grow: 1;
+}
+.user_panel > footer {
+  flex-grow: 0.1;
 }

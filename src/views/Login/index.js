@@ -1,7 +1,6 @@
 import "./style.css";
 import swal from "sweetalert";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import { Footer } from "../../Components/Footer";
@@ -9,6 +8,7 @@ import { Form } from "../../Components/Form";
 import { Header } from "../../Components/Header";
 
 import { useSession } from "../../context/sessionToken";
+import { LoginService } from "../../services/users";
 
 export const Login = () => {
   const [, setToken] = useSession();
@@ -29,11 +29,8 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_BACKEND}/login`,
-        loginData
-      );
-      const tokenResponse = res.data.data.token;
+      const response = await LoginService(loginData)
+      const tokenResponse = response.data.data.token;
       setToken(tokenResponse);
       navigate(`/panel`);
     } catch (error) {
@@ -42,7 +39,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="formLogin">
+    <div className="form_login">
       <Header tituloVista="Login"></Header>
       <Form
         handleInputChangeFunction={handleInputChangeLogin}
