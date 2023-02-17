@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 const SessionContext = createContext(null);
 
 const SessionProvider = ({ children }) => {
@@ -12,11 +13,13 @@ const SessionProvider = ({ children }) => {
   }, [token]);
 
   const logout = () => {
-    console.log("adios");
+    swal("Thank you for using our app.See you later!!");
     setToken(null);
     localStorage.removeItem("token");
 
-    navigate(`/`);
+    setTimeout(() => {
+      navigate(`/`);
+    }, 1000);
   };
 
   return (

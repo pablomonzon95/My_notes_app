@@ -9,6 +9,7 @@
   height: 80vh;
   font-family: "Caveat", cursive;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   text-align: center;
   overflow-y: auto;
@@ -40,4 +41,17 @@
 .pin_detail {
   padding-top: 1.5rem;
   width: 10%;
+}
+.edit_delete {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+.trash {
+  width: 5rem;
+  cursor: pointer;
+}
+.edit {
+  width: 5rem;
+  cursor: pointer;
 }

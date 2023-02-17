@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AddNoteForm } from "../../Components/AddNoteForm";
 import { AddCategoryForm } from "../../Components/AddCategoryForm";
 import { Header } from "../../Components/Header";
@@ -10,11 +10,14 @@ import "./style.css";
 
 export const UserPanel = () => {
   const [, setModal] = useModal();
-
+  const [loading, setLoading] = useState(true);
   const { notes, getNotes } = useNotes();
 
   useEffect(() => {
     getNotes();
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
     // eslint-disable-next-line
   }, [notes]);
 
@@ -32,7 +35,14 @@ export const UserPanel = () => {
         <button onClick={() => logout()}>Log out</button>
       </Header>
       <AddNoteForm></AddNoteForm>
-      <NotesSection title="Your personal notes" notes={notes}></NotesSection>
+      {loading ? (
+        <div className="loading">
+          <img src="./img/loading.gif" alt="loading"></img>
+          <h2>Loading...</h2>
+        </div>
+      ) : (
+        <NotesSection title="Your personal notes" notes={notes}></NotesSection>
+      )}
     </div>
   );
 };

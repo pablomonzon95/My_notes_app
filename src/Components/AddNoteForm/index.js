@@ -3,11 +3,12 @@ import swal from "sweetalert";
 
 import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
-import { postNoteService } from "../../services/notes";
+import { postNoteService, editNoteService } from "../../services/notes";
+import { useModal } from "../../context/ModalContext";
 
-export const AddNoteForm = () => {
+export const AddNoteForm = (id) => {
   const [categories, setCategories] = useState([]);
-
+  const [modal, setModal] = useModal();
   useEffect(() => {
     const loadCategories = async () => {
       const results = await getCategoriesService();
@@ -17,8 +18,6 @@ export const AddNoteForm = () => {
     loadCategories();
   }, [categories]);
 
-
-
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
 
@@ -26,7 +25,9 @@ export const AddNoteForm = () => {
     const payload = new FormData(form);
 
     try {
-      postNoteService(payload)
+      modal === null
+        ? await postNoteService(payload)
+        : await editNoteService(id.id, payload);
 
       form.reset();
     } catch (error) {
@@ -38,15 +39,19 @@ export const AddNoteForm = () => {
     <div className="note_form">
       <form onSubmit={handleSubmitaddNoteData}>
         <label htmlFor="title">Title</label>
-        <input type="text" name="title" id="title" required></input>
+        <input type="text" name="title" id="title"></input>
         <label htmlFor="note">Note</label>
-        <input type="text" name="note" id="note" required></input>
+        <input type="text" name="note" id="note"></input>
         <label htmlFor="public">Public?</label>
         <input type="checkbox" name="public" id="public"></input>
         <label htmlFor="categoryId">Category</label>
-        <select required name="categoryId" id="categoryId">
+        <select name="categoryId" id="categoryId">
           {categories.map((category) => {
-            return <option key={category.id} value={category.id}>{category.name}</option>;
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
           })}
         </select>
         <label htmlFor="addImage"></label>

@@ -69,12 +69,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+Cosas por mejorar hasta ahora:
 
-
-Cosas por mejorar hasta ahora: 
-
-
-en frontend: 
+en frontend:
 
 ver si podemos hacer algo mas de diseño en login y registro en pantalla grande
 
@@ -86,11 +83,6 @@ estilar formulario de añadir categoria
 
 al crear una nota que se agregue automaticamente al panel user (si lo hago como en categorias me da bucle infinito)
 
-// comentar el codigo 
+// comentar el codigo
 
-
-
-
-
-
-
+//que todo tenga el mismo orden
