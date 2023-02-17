@@ -6,17 +6,17 @@ import { NotesSection } from "../../Components/NotesSection";
 import { useSession } from "../../context/sessionToken";
 import { useNotes } from "../../hooks/useNotes";
 import { useModal } from "../../context/ModalContext";
-import "./style.css"
+import "./style.css";
 
 export const UserPanel = () => {
   const [, setModal] = useModal();
 
-  const { Notes, getNotes } = useNotes();
+  const { notes, getNotes } = useNotes();
 
   useEffect(() => {
     getNotes();
     // eslint-disable-next-line
-  }, []);
+  }, [notes]);
 
   const [, , logout] = useSession();
   return (
@@ -32,7 +32,7 @@ export const UserPanel = () => {
         <button onClick={() => logout()}>Log out</button>
       </Header>
       <AddNoteForm></AddNoteForm>
-      <NotesSection title="Your personal notes" notes={Notes}></NotesSection>
+      <NotesSection title="Your personal notes" notes={notes}></NotesSection>
     </div>
   );
 };

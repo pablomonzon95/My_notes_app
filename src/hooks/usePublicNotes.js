@@ -5,23 +5,21 @@ export const usePublicNotes = () => {
   const [publicNotes, setPublicNotes] = useState([]);
   const [publicNote, setPublicNote] = useState({
     id: "",
-    title:"",
-    note:"",
-    image:"",
+    title: "",
+    note: "",
+    image: "",
     imageId: "",
-    imageData:"",
-    public:"",
-    userId:"",
-    categoryId:""
-
+    imageData: "",
+    public: "",
+    userId: "",
+    categoryId: "",
   });
-  
+
   const getNote = async (id) => {
     try {
-      const response = getNoteService(id)
+      const response = await getNoteService(id);
 
-      setPublicNote({...publicNote, ...response.data.data});
-     
+      setPublicNote({ ...publicNote, ...response.data.data });
     } catch (e) {
       console.error(e.message);
     }
@@ -29,7 +27,7 @@ export const usePublicNotes = () => {
 
   const getPublicNotes = async () => {
     try {
-      const response = await getPublicNotesService()
+      const response = await getPublicNotesService();
       setPublicNotes(response.data.data);
     } catch (e) {
       console.error(e.message);
