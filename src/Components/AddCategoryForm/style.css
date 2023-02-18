@@ -1,15 +1,35 @@
 .category_form {
-    background-image: url("../../../public/img/papelsinpin.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
+  background-color: rgb(219, 230, 237);
   flex-direction: column;
-  width: 60vw;
-  height: 80vh;
+  width: 30vw;
+  height: 40vh;
   font-family: "Caveat", cursive;
+  justify-content: s;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-around;
   text-align: center;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
+}
+.category_form form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 5rem;
+}
+.category_form > form > label {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.category_form > form > input {
+  background-color: white;
+  text-align: center;
+  border: none;
+
+  width: 300px;
+  height: 2rem;
+  border-radius: 5px;
+  font-size: 1rem;
 }

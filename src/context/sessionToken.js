@@ -7,7 +7,6 @@ const SessionProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const [token, setToken] = useState(localStorage.getItem("token"));
-
   useEffect(() => {
     localStorage.setItem("token", token);
   }, [token]);
@@ -19,7 +18,7 @@ const SessionProvider = ({ children }) => {
 
     setTimeout(() => {
       navigate(`/`);
-    }, 1000);
+    }, 500);
   };
 
   return (

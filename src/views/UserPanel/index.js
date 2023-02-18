@@ -17,7 +17,7 @@ export const UserPanel = () => {
     getNotes();
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
     // eslint-disable-next-line
   }, [notes]);
 

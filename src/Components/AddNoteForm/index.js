@@ -42,7 +42,7 @@ export const AddNoteForm = (id) => {
         <input type="text" name="title" id="title"></input>
         <label htmlFor="note">Note</label>
         <input type="text" name="note" id="note"></input>
-        <label htmlFor="public">Public?</label>
+        <label htmlFor="public">Public</label>
         <input type="checkbox" name="public" id="public"></input>
         <label htmlFor="categoryId">Category</label>
         <select name="categoryId" id="categoryId">
