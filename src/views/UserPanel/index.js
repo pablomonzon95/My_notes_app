@@ -30,7 +30,7 @@ export const UserPanel = () => {
             setModal(<AddCategoryForm />);
           }}
         >
-          Categorias
+          Add category
         </button>
         <button onClick={() => logout()}>Log out</button>
       </Header>

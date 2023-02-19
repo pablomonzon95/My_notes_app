@@ -29,7 +29,7 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await LoginService(loginData)
+      const response = await LoginService(loginData);
       const tokenResponse = response.data.data.token;
       setToken(tokenResponse);
       navigate(`/panel`);
@@ -41,6 +41,7 @@ export const Login = () => {
   return (
     <div className="form_login">
       <Header viewtitle="Login"></Header>
+
       <Form
         handleInputChangeFunction={handleInputChangeLogin}
         handleSubmitFunction={handleSubmitLogin}

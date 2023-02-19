@@ -30,6 +30,8 @@ export const AddNoteForm = (id) => {
         : await editNoteService(id.id, payload);
 
       form.reset();
+
+      swal("Nota agregada correctamente");
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");
     }
@@ -45,7 +47,8 @@ export const AddNoteForm = (id) => {
         <label htmlFor="public">Public</label>
         <input type="checkbox" name="public" id="public"></input>
         <label htmlFor="categoryId">Category</label>
-        <select name="categoryId" id="categoryId">
+        <select className="select" name="categoryId" id="categoryId">
+          <option selected="selected">select category</option>
           {categories.map((category) => {
             return (
               <option key={category.id} value={category.id}>
@@ -54,9 +57,14 @@ export const AddNoteForm = (id) => {
             );
           })}
         </select>
-        <label htmlFor="addImage"></label>
-        <input type="file" name="image" id="addImage"></input>
-        <button type="submit">Send</button>
+        <div className="image_button">
+          <span className="addImage">
+            <label htmlFor="addImage"></label>
+
+            <input type="file" name="image" id="addImage"></input>
+          </span>
+          <button type="submit">Send</button>
+        </div>
       </form>
     </div>
   );

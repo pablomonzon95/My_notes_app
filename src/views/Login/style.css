@@ -9,3 +9,7 @@
   padding-top: 3rem;
   flex-grow: 1;
 }
+.form_login > form > input:focus {
+  outline: none;
+  background-color: rgb(255, 255, 255);
+}

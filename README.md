@@ -81,8 +81,12 @@ estilar formulario de añadir nota
 
 estilar formulario de añadir categoria
 
-al crear una nota que se agregue automaticamente al panel user (si lo hago como en categorias me da bucle infinito)
-
 // comentar el codigo
 
 //que todo tenga el mismo orden
+
+//mirar el error de la categoria (devuelve categoryId)
+
+//cuando se edita desde el front se devuelve title y note desde postman no
+
+//tendriamos que añadir la categoria en algun sitio de la nota
