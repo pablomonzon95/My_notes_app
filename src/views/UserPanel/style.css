@@ -1,8 +1,8 @@
 .user_panel {
   min-height: 100vh;
   background-image: url("../../../public/img/fondo.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size:contain;
+  background-repeat: repeat;
   background-clip: border-box;
   display: flex;
   flex-direction: column;
@@ -21,11 +21,14 @@
 }
 .loading {
   display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e1eaf0;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
-  margin-top: 5rem;
+
 }
 .loading img {
-  width: 20vw;
+  width: 180px;
 }

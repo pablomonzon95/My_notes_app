@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AddNoteForm } from "../../Components/AddNoteForm";
 import { AddCategoryForm } from "../../Components/AddCategoryForm";
 import { Header } from "../../Components/Header";
+import {Footer} from "../../Components/Footer"
 import { NotesSection } from "../../Components/NotesSection";
 import { useSession } from "../../context/sessionToken";
 import { useNotes } from "../../hooks/useNotes";
@@ -34,15 +35,20 @@ export const UserPanel = () => {
         </button>
         <button onClick={() => logout()}>Log out</button>
       </Header>
-      <AddNoteForm></AddNoteForm>
+      
       {loading ? (
         <div className="loading">
           <img src="./img/loading.gif" alt="loading"></img>
           <h2>Loading...</h2>
         </div>
       ) : (
+        <>
+        <AddNoteForm></AddNoteForm>
         <NotesSection title="Your personal notes" notes={notes}></NotesSection>
+        </>
+
       )}
+      <Footer></Footer>
     </div>
   );
 };

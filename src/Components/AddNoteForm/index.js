@@ -8,7 +8,7 @@ import { useModal } from "../../context/ModalContext";
 
 export const AddNoteForm = (id) => {
   const [categories, setCategories] = useState([]);
-  const [modal, setModal] = useModal();
+  const [modal] = useModal();
   useEffect(() => {
     const loadCategories = async () => {
       const results = await getCategoriesService();
@@ -48,7 +48,7 @@ export const AddNoteForm = (id) => {
         <input type="checkbox" name="public" id="public"></input>
         <label htmlFor="categoryId">Category</label>
         <select className="select" name="categoryId" id="categoryId">
-          <option selected="selected">select category</option>
+          
           {categories.map((category) => {
             return (
               <option key={category.id} value={category.id}>
@@ -60,11 +60,11 @@ export const AddNoteForm = (id) => {
         <div className="image_button">
           <span className="addImage">
             <label htmlFor="addImage"></label>
-
-            <input type="file" name="image" id="addImage"></input>
+            <input className="upload_file" type="file" name="image" id="addImage"></input>
           </span>
-          <button type="submit">Send</button>
-        </div>
+          </div>
+          <button type="submit">Add a note</button>
+       
       </form>
     </div>
   );

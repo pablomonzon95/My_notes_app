@@ -1,26 +1,30 @@
 .header {
-  padding: 2rem;
+  padding: 1rem;
   background-color: #e1eaf0;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: baseline;
-  gap: 1rem;
+  gap: 5rem;
+  border-bottom: 2px solid gray;
 }
 .header img {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   rotate: 10deg;
 }
 .logo {
-  padding-top: 2rem;
+  padding-top: 1rem;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 .logo h1 {
   font-size: 1rem;
 }
 .header h2 {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   text-align: center;
   text-shadow: 5px 5px 5px white;
 }
@@ -36,4 +40,11 @@ a:visited {
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
+}
+
+
+@media (max-width: 500px ){
+  .header{
+    gap: 1rem;
+  }
 }

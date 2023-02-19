@@ -1,9 +1,8 @@
 .category_form {
   display: flex;
   background-color: rgb(219, 230, 237);
-  flex-direction: column;
-  width: 30vw;
-  height: 40vh;
+  width: 40vw;
+  height: 45vh;
   font-family: "Caveat", cursive;
   justify-content: s;
   align-items: center;
@@ -14,10 +13,9 @@
 .category_form form {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  gap: 5rem;
+  gap: 1rem;
 }
 .category_form > form > label {
   font-size: 2.5rem;
@@ -32,4 +30,12 @@
   height: 2rem;
   border-radius: 5px;
   font-size: 1rem;
+}
+
+@media (max-width:600px) {
+  .category_form {
+    max-width: 95vw;
+    width: auto;
+    height: auto;
+  }
 }

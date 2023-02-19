@@ -12,6 +12,7 @@ export const MainPage = () => {
   const { publicNotes, getPublicNotes } = usePublicNotes();
   useEffect(() => {
     getPublicNotes();
+     // eslint-disable-next-line
   },[]);
 
   return (

@@ -3,10 +3,13 @@
   justify-content: center;
   background-color: #e1eaf0;
   border-bottom: 2px solid gray;
-  padding-bottom: 3rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  
 }
 .note_form > form {
   display: flex;
+  gap:0.7rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -32,7 +35,7 @@ select {
   border-radius: 5px;
 }
 .image_button {
-  display: flex;
+
 
   justify-content: center;
   align-items: center;
@@ -47,12 +50,4 @@ select {
     margin-bottom: 0.5rem;
   }
 }
-@media (max-width: 450px) {
-  .image_button {
-    display: flex;
-    flex-direction: column;
-  }
-  .image_button input {
-    margin: 0.5rem 0rem;
-  }
-}
+
