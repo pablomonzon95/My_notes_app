@@ -74,18 +74,21 @@ Cosas por mejorar hasta ahora:
 
 en frontend:
 
-ver si podemos hacer algo mas de diseño en login y registro en pantalla grande
+ver si podemos hacer algo mas de diseño en login y registro en pantalla grande.
 
-// comentar el codigo
+// comentar el codigo.
 
-//que todo tenga el mismo orden
+//que todo tenga el mismo orden.
 
-//cuando se edita desde el front se devuelve title y note desde postman no
+//cuando se edita desde el front se devuelve title y note desde postman no.
 
-//cambiar el nombre de "seleccionar archivo"
+//cambiar el nombre de "seleccionar archivo".
 
-//tendriamos que añadir la categoria en algun sitio de la nota(filtro?)
+//tendriamos que añadir la categoria en algun sitio de la nota(filtro?).
 
-// ver si podemos subir la app a vercel
+// ver si podemos subir la app a vercel.
+
+//proptypes.
+onClick={setModal(<DeleteCategoryForm categories={categories}></DeleteCategoryForm>)}
 
 

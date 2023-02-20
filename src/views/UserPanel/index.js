@@ -8,11 +8,15 @@ import { useSession } from "../../context/sessionToken";
 import { useNotes } from "../../hooks/useNotes";
 import { useModal } from "../../context/ModalContext";
 import "./style.css";
+import { deleteCategoryService } from "../../services/categories";
+import swal from "sweetalert";
 
 export const UserPanel = () => {
+  const [categories, setCategories] = useState([]);
   const [, setModal] = useModal();
   const [loading, setLoading] = useState(true);
   const { notes, getNotes } = useNotes();
+  const [categoryData, setCategoryData] = useState("")
 
   useEffect(() => {
     getNotes();
@@ -23,6 +27,26 @@ export const UserPanel = () => {
   }, [notes]);
 
   const [, , logout] = useSession();
+
+  const handleInputChangeDeleteCategory= (e) => {
+    let categoryId= e.target.value;
+    console.log(categoryId)
+    setCategoryData(categoryId);
+  };
+
+  const handleSubmitDeleteCategoryData = async (e) => {
+    e.preventDefault();
+
+    try {
+      await deleteCategoryService(categoryData)
+
+      swal("Categoria borrada correctamente");
+    } catch (error) {
+      swal("An error has occured", error.response.data.message, "error");
+    }
+    
+  };
+
   return (
     <div className="user_panel">
       <Header viewtitle="This is you personal panel">
@@ -33,6 +57,7 @@ export const UserPanel = () => {
         >
           Add category
         </button>
+
         <button onClick={() => logout()}>Log out</button>
       </Header>
       
@@ -43,7 +68,25 @@ export const UserPanel = () => {
         </div>
       ) : (
         <>
-        <AddNoteForm></AddNoteForm>
+        <AddNoteForm categories = {categories} setCategories={setCategories}></AddNoteForm>
+        {localStorage.getItem("id") === "1" && <form onSubmit= {handleSubmitDeleteCategoryData}className="delete_category">
+        <label htmlFor="category_delete"> Choose a category to delete</label>
+        <select onChange={handleInputChangeDeleteCategory} className="select_delete" name="category_delete" id="category_delete">
+          
+          {categories.map((category) => {
+            
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
+     
+        </select>
+         
+        <button >Delete</button>
+        
+      </form> }
         <NotesSection title="Your personal notes" notes={notes}></NotesSection>
         </>
 

@@ -7,9 +7,15 @@ const SessionProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [adminId, setAdminId] = useState(localStorage.getItem("id"));
+
   useEffect(() => {
     localStorage.setItem("token", token);
   }, [token]);
+
+  useEffect(() => {
+    localStorage.setItem("id", adminId)
+  }, [adminId]);
 
   const logout = () => {
     swal("Thank you for using our app.See you later!!");
@@ -22,7 +28,7 @@ const SessionProvider = ({ children }) => {
   };
 
   return (
-    <SessionContext.Provider value={[token, setToken, logout]}>
+    <SessionContext.Provider value={[token, setToken, logout, setAdminId]}>
       {children}
     </SessionContext.Provider>
   );

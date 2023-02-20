@@ -5,6 +5,7 @@
   border-bottom: 2px solid gray;
   padding-bottom: 1rem;
   padding-top: 1rem;
+  min-width: 100vw
   
 }
 .note_form > form {

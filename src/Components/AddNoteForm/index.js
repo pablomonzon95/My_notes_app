@@ -1,14 +1,16 @@
 import "./style.css";
 import swal from "sweetalert";
 
-import { useEffect, useState } from "react";
+import { useEffect,  } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService, editNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
 
-export const AddNoteForm = (id) => {
-  const [categories, setCategories] = useState([]);
-  const [modal] = useModal();
+
+export const AddNoteForm = ({id , categories, setCategories}) => {
+
+  const [modal, ] = useModal();
+
   useEffect(() => {
     const loadCategories = async () => {
       const results = await getCategoriesService();
@@ -64,8 +66,8 @@ export const AddNoteForm = (id) => {
           </span>
           </div>
           <button type="submit">Add a note</button>
-       
       </form>
+     
     </div>
   );
 };

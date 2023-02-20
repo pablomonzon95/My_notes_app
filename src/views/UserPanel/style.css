@@ -32,3 +32,16 @@
 .loading img {
   width: 180px;
 }
+.delete_category{
+  background-color: #e1eaf0;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  padding:0.5rem;
+  border-bottom: 2px solid gray;
+}
+
+.delete_category label{
+  font-family: "Lobster", cursive;
+  font-size: 1.4rem;
+}

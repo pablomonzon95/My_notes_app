@@ -11,7 +11,7 @@ import { useSession } from "../../context/sessionToken";
 import { LoginService } from "../../services/users";
 
 export const Login = () => {
-  const [, setToken] = useSession();
+  const [, setToken, , setAdminId] = useSession();
   const navigate = useNavigate();
 
   const [loginData, setloginData] = useState({
@@ -30,8 +30,13 @@ export const Login = () => {
 
     try {
       const response = await LoginService(loginData);
+      
       const tokenResponse = response.data.data.token;
+      const adminId = response.data.id
+
       setToken(tokenResponse);
+      setAdminId(adminId)
+      
       navigate(`/panel`);
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");

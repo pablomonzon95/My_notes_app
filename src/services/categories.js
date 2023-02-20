@@ -18,3 +18,12 @@ export const postCategoryService = async (payload) => {
     },
   })
 };
+
+export const deleteCategoryService = async (id) => {
+  const token = `Bearer ${localStorage.getItem("token")}`;
+  await axios.delete(`${process.env.REACT_APP_BACKEND}/categories/${id}`, {
+    headers: {
+      authorization: token,
+    },
+  });
+}
