@@ -1,7 +1,5 @@
 import axios from "axios";
 
-
-
 export const getCategoriesService = async () => {
   const response = await axios.get(
     `${process.env.REACT_APP_BACKEND}/categories`
@@ -16,7 +14,7 @@ export const postCategoryService = async (payload) => {
       "Content-Type": "multipart/form-data",
       authorization: token,
     },
-  })
+  });
 };
 
 export const deleteCategoryService = async (id) => {
@@ -26,4 +24,17 @@ export const deleteCategoryService = async (id) => {
       authorization: token,
     },
   });
-}
+};
+
+export const getNotesByCategories = async (id) => {
+  const token = `Bearer ${localStorage.getItem("token")}`;
+  const result = await axios.get(
+    `${process.env.REACT_APP_BACKEND}/categories/${id}`,
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+  return result;
+};

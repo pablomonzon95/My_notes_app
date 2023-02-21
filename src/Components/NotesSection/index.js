@@ -2,32 +2,27 @@ import "./style.css";
 
 import { useModal } from "../../context/ModalContext";
 import { NoteDetail } from "../NoteDetail";
-import  convertImage  from "../../Utils/convertImage";
-
+import convertImage from "../../Utils/convertImage";
 
 export const NotesSection = ({ title, notes }) => {
- 
   const [, setModal] = useModal();
-
-  
 
   return (
     <div className="notes_panel">
       <h1>{title}</h1>
+
       <ul>
         {notes.map((note) => {
-
-          let convertedImage= "";
-          if(note.image) {
-          convertedImage = convertImage(note.imageData.data)}
+          let convertedImage = "";
+          if (note.image) {
+            convertedImage = convertImage(note.imageData.data);
+          }
           return (
             <li
               key={note.id}
               onClick={() => {
                 note.image
-                  ? setModal(
-                      <NoteDetail id={note.id}  />
-                    )
+                  ? setModal(<NoteDetail id={note.id} />)
                   : setModal(<NoteDetail id={note.id} />);
               }}
             >

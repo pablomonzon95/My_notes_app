@@ -69,7 +69,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
 Cosas por mejorar hasta ahora:
 
 en frontend:
@@ -80,15 +79,15 @@ ver si podemos hacer algo mas de diseño en login y registro en pantalla grande.
 
 //que todo tenga el mismo orden.
 
-//cuando se edita desde el front se devuelve title y note desde postman no.
-
 //cambiar el nombre de "seleccionar archivo".
-
-//tendriamos que añadir la categoria en algun sitio de la nota(filtro?).
 
 // ver si podemos subir la app a vercel.
 
 //proptypes.
-onClick={setModal(<DeleteCategoryForm categories={categories}></DeleteCategoryForm>)}
 
+TUTORIA
+//bucles infinitos en notas y categorias
 
+//notedetail tome el id de la nota en filter
+
+//mirar que el editar una nota funcione

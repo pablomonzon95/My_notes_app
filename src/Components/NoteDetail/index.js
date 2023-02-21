@@ -9,7 +9,7 @@ import { AddNoteForm } from "../AddNoteForm";
 export const NoteDetail = ({ id }) => {
   const { getNote, publicNote } = usePublicNotes();
   const [, setModal] = useModal();
-
+  console.log(id);
   useEffect(() => {
     getNote(id);
     //eslint-disable-next-line

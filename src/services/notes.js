@@ -42,8 +42,6 @@ export const deleteNoteService = async (id) => {
 };
 
 export const editNoteService = async (id, payload) => {
-  console.log(id);
-  console.log(payload);
   const token = `Bearer ${localStorage.getItem("token")}`;
   await axios.put(`${process.env.REACT_APP_BACKEND}/note/${id}`, payload, {
     headers: {

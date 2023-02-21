@@ -1,15 +1,12 @@
 import "./style.css";
 import swal from "sweetalert";
-
-import { useEffect,  } from "react";
+import { useEffect } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService, editNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
 
-
-export const AddNoteForm = ({id , categories, setCategories}) => {
-
-  const [modal, ] = useModal();
+export const AddNoteForm = ({ id, categories, setCategories }) => {
+  const [modal] = useModal();
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -50,7 +47,6 @@ export const AddNoteForm = ({id , categories, setCategories}) => {
         <input type="checkbox" name="public" id="public"></input>
         <label htmlFor="categoryId">Category</label>
         <select className="select" name="categoryId" id="categoryId">
-          
           {categories.map((category) => {
             return (
               <option key={category.id} value={category.id}>
@@ -62,12 +58,16 @@ export const AddNoteForm = ({id , categories, setCategories}) => {
         <div className="image_button">
           <span className="addImage">
             <label htmlFor="addImage"></label>
-            <input className="upload_file" type="file" name="image" id="addImage"></input>
+            <input
+              className="upload_file"
+              type="file"
+              name="image"
+              id="addImage"
+            ></input>
           </span>
-          </div>
-          <button type="submit">Add a note</button>
+        </div>
+        <button type="submit">Add a note</button>
       </form>
-     
     </div>
   );
 };
