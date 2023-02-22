@@ -1,0 +1,54 @@
+.note_form {
+  display: flex;
+  justify-content: center;
+  background-color: #e1eaf0;
+  border-bottom: 2px solid gray;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  min-width: 100vw
+  
+}
+.note_form > form {
+  display: flex;
+  gap:0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.note_form > form > label {
+  font-family: "Lobster", cursive;
+  font-size: 1.25rem;
+  margin-right: 0.25rem;
+}
+
+.note_form > form > input,
+select {
+  padding: 0rem 0.5rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  justify-content: center;
+  margin-right: 1rem;
+  margin-left: 0.25rem;
+  outline: none;
+  font-size: 1rem;
+  height: 1.5rem;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+}
+.image_button {
+
+
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 881px) {
+  .note_form > form {
+    flex-direction: column;
+  }
+  .note_form > form > input,
+  select {
+    margin-bottom: 0.5rem;
+  }
+}
+

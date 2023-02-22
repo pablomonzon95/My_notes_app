@@ -1,12 +1,13 @@
 import "./style.css";
 import swal from "sweetalert";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService, editNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
 
-export const AddNoteForm = ({ id, categories, setCategories }) => {
+export const AddNoteForm = ({ id, setNotes, notes }) => {
   const [modal] = useModal();
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -15,8 +16,8 @@ export const AddNoteForm = ({ id, categories, setCategories }) => {
     };
 
     loadCategories();
-  }, [categories]);
-
+  }, []);
+  /* console.log(categories); */
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
 
@@ -24,9 +25,12 @@ export const AddNoteForm = ({ id, categories, setCategories }) => {
     const payload = new FormData(form);
 
     try {
-      modal === null
-        ? await postNoteService(payload)
-        : await editNoteService(id.id, payload);
+      await postNoteService(payload); //meter en una variable lo que venga del back (ver abajo)
+
+      setNotes([
+        { id: 948793793, title: "Cambia esto por algo de verdad" }, //cambiar este objeto por el real que viene del back
+        ...notes,
+      ]);
 
       form.reset();
 

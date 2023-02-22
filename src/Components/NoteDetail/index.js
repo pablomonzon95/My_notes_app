@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import { deleteNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
 import { AddNoteForm } from "../AddNoteForm";
+import { EditNoteForm } from "../EditNoteForm";
 export const NoteDetail = ({ id }) => {
   const { getNote, publicNote } = usePublicNotes();
   const [, setModal] = useModal();
@@ -23,7 +24,7 @@ export const NoteDetail = ({ id }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        setModal(<AddNoteForm id={publicNote.id}></AddNoteForm>);
+        setModal(<EditNoteForm note={publicNote}></EditNoteForm>);
       } else {
         swal("Your note stay the same!");
       }
@@ -56,7 +57,7 @@ export const NoteDetail = ({ id }) => {
       {publicNote.imageData && (
         <img
           className="image_nota"
-          src={convertImage(publicNote.imageData.data)}
+          src={`${process.env.REACT_APP_BACKEND}/uploads/${publicNote.image}`}
           alt={publicNote.title}
         ></img>
       )}

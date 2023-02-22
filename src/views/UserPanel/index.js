@@ -22,15 +22,21 @@ export const UserPanel = () => {
   const [loading, setLoading] = useState(true);
   const { notes, setNotes, getNotes } = useNotes();
   const [categoryData, setCategoryData] = useState("");
+  const [filter, setFilter] = useState(null);
 
   useEffect(() => {
     getNotes();
+
+    (async () => {
+      const results = await getCategoriesService();
+      setCategories(results.data.data);
+    })();
     setTimeout(() => {
       setLoading(false);
     }, 1000);
     // eslint-disable-next-line
   }, []);
-
+  //console.log(notes);
   const [, , logout] = useSession();
 
   const handleInputChangeDeleteCategory = (e) => {
@@ -50,14 +56,18 @@ export const UserPanel = () => {
       swal("An error has occured", error.response.data.message, "error");
     }
   };
-  const handleSubmitFilterByCategory = async (e) => {
-    e.preventDefault();
-    try {
-      const result = await getNotesByCategories(categoryData);
-      const resultOk = result.data.data;
-      setNotes(resultOk);
-    } catch (error) {}
-  };
+  // const handleSubmitFilterByCategory = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const result = await getNotesByCategories(categoryData);
+  //     const resultOk = result.data.data;
+  //     setNotes(resultOk);
+  //   } catch (error) {}
+  // };^
+
+  const renderedNotes = filter
+    ? notes.filter((note) => Number(note.categoryId) === Number(filter))
+    : notes;
 
   return (
     <div className="user_panel">
@@ -81,6 +91,8 @@ export const UserPanel = () => {
       ) : (
         <>
           <AddNoteForm
+            notes={notes}
+            setNotes={setNotes}
             categories={categories}
             setCategories={setCategories}
           ></AddNoteForm>
@@ -112,16 +124,16 @@ export const UserPanel = () => {
               <button>Delete</button>
             </form>
           )}
-          <form onSubmit={handleSubmitFilterByCategory} className="filter_form">
+          <form className="filter_form">
             <label htmlFor="category_filter">
-              {" "}
-              Choose your notes by cattegory
+              Choose your notes by category
             </label>
             <select
-              onChange={handleInputChangeDeleteCategory}
+              onChange={(e) => setFilter(e.target.value)}
               className="select_filter"
               name="category_filter"
               id="category_filter"
+              value={filter}
             >
               {categories.map((category) => {
                 return (
@@ -131,18 +143,27 @@ export const UserPanel = () => {
                 );
               })}
             </select>
-
-            <button>Filter</button>
           </form>
           {/* <AddFilter
             categories={categories}
             setCategories={setCategories}
           ></AddFilter> */}
 
-          <NotesSection
-            title="Your personal notes"
-            notes={notes}
-          ></NotesSection>
+          {filter ? (
+            <p>
+              Estás viendo las notas filtradas{" "}
+              <button onClick={() => setFilter(null)}>Quitar filtro</button>
+            </p>
+          ) : null}
+
+          {renderedNotes.length > 0 ? (
+            <NotesSection
+              title="Your personal notes"
+              notes={renderedNotes}
+            ></NotesSection>
+          ) : (
+            <p>No hay notas, cambia el filtro</p>
+          )}
         </>
       )}
       <Footer></Footer>
