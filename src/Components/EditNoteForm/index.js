@@ -2,11 +2,11 @@ import "./style.css";
 import swal from "sweetalert";
 import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
-import { postNoteService, editNoteService } from "../../services/notes";
+import { editNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
 
 export const EditNoteForm = ({ note }) => {
-  const [modal] = useModal();
+  const [, setModal] = useModal();
   const [categories, setCategories] = useState([]);
   const [deleteImage, setDeleteImage] = useState(false);
 
@@ -18,7 +18,7 @@ export const EditNoteForm = ({ note }) => {
 
     loadCategories();
   }, []);
-  /* console.log(categories); */
+
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
 
@@ -29,14 +29,12 @@ export const EditNoteForm = ({ note }) => {
       await editNoteService(note.id, payload);
 
       form.reset();
-
-      swal("Nota agregada correctamente");
+      setModal(null);
+      swal("Note edited succesfully");
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");
     }
   };
-
-  console.log(note);
 
   return (
     <div className="note_form">
@@ -60,7 +58,7 @@ export const EditNoteForm = ({ note }) => {
           type="checkbox"
           name="public"
           id="public"
-          defaultChecked={note.public === 1}
+          defaultChecked={note.public === "on"}
         ></input>
         <label htmlFor="categoryId">Category</label>
         <select className="select" name="categoryId" id="categoryId">

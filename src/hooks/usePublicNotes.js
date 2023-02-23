@@ -8,8 +8,6 @@ export const usePublicNotes = () => {
     title: "",
     note: "",
     image: "",
-    imageId: "",
-    imageData: "",
     public: "",
     userId: "",
     categoryId: "",

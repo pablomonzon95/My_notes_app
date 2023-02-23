@@ -8,12 +8,9 @@ import { useSession } from "../../context/sessionToken";
 import { useNotes } from "../../hooks/useNotes";
 import { useModal } from "../../context/ModalContext";
 import "./style.css";
-import {
-  deleteCategoryService,
-  getNotesByCategories,
-} from "../../services/categories";
+import { deleteCategoryService } from "../../services/categories";
 import swal from "sweetalert";
-import { AddFilter } from "../../Components/AddFilter";
+
 import { getCategoriesService } from "../../services/categories";
 
 export const UserPanel = () => {
@@ -36,7 +33,7 @@ export const UserPanel = () => {
     }, 1000);
     // eslint-disable-next-line
   }, []);
-  //console.log(notes);
+
   const [, , logout] = useSession();
 
   const handleInputChangeDeleteCategory = (e) => {
@@ -144,10 +141,6 @@ export const UserPanel = () => {
               })}
             </select>
           </form>
-          {/* <AddFilter
-            categories={categories}
-            setCategories={setCategories}
-          ></AddFilter> */}
 
           {filter ? (
             <p>

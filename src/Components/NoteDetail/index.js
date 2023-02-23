@@ -1,16 +1,16 @@
 import "./style.css";
 import { useEffect } from "react";
 import { usePublicNotes } from "../../hooks/usePublicNotes";
-import convertImage from "../../Utils/convertImage";
+
 import swal from "sweetalert";
 import { deleteNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
-import { AddNoteForm } from "../AddNoteForm";
+
 import { EditNoteForm } from "../EditNoteForm";
 export const NoteDetail = ({ id }) => {
   const { getNote, publicNote } = usePublicNotes();
   const [, setModal] = useModal();
-  console.log(id);
+
   useEffect(() => {
     getNote(id);
     //eslint-disable-next-line
@@ -50,11 +50,12 @@ export const NoteDetail = ({ id }) => {
       }
     });
   };
+  console.log(`${process.env.REACT_APP_BACKEND}/uploads/${publicNote.image}`);
   return (
     <div className="note_detail">
       <img className="pin_detail" src="/img/pin.png" alt="pin"></img>
       <h2>{publicNote.title}</h2>
-      {publicNote.imageData && (
+      {publicNote.image === "No images" || publicNote.image === null ? null : (
         <img
           className="image_nota"
           src={`${process.env.REACT_APP_BACKEND}/uploads/${publicNote.image}`}

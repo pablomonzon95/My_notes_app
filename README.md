@@ -86,8 +86,13 @@ ver si podemos hacer algo mas de diseño en login y registro en pantalla grande.
 //proptypes.
 
 TUTORIA
-//bucles infinitos en notas y categorias
-
-//notedetail tome el id de la nota en filter
 
 //mirar que el editar una nota funcione
+
+//editar nota con imagen
+
+//quitar imagen
+
+//refrescar notas al editar
+
+//estilos del filtro
