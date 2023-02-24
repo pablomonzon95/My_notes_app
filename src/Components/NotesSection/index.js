@@ -3,7 +3,7 @@ import "./style.css";
 import { useModal } from "../../context/ModalContext";
 import { NoteDetail } from "../NoteDetail";
 
-export const NotesSection = ({ title, notes }) => {
+export const NotesSection = ({ title, notes, setNotes }) => {
   const [, setModal] = useModal();
 
   return (
@@ -16,7 +16,7 @@ export const NotesSection = ({ title, notes }) => {
             <li
               key={note.id}
               onClick={() => {
-                setModal(<NoteDetail id={note.id} />);
+                setModal(<NoteDetail setNotes={setNotes} notes ={notes}id={note.id} />);
               }}
             >
               <img className="pin" src="/img/pin.png" alt="pin"></img>

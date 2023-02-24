@@ -87,12 +87,15 @@ ver si podemos hacer algo mas de diseño en login y registro en pantalla grande.
 
 TUTORIA
 
-//mirar que el editar una nota funcione
+//mirar que el editar una nota funcione (queda que no se elimine la imagen si ya la tiene y que se refresque automaticamente)
 
-//editar nota con imagen
+//al eliminar una categoria que se refresque automaticamente
 
-//quitar imagen
 
-//refrescar notas al editar
 
-//estilos del filtro
+
+
+
+
+
+

@@ -56,3 +56,22 @@
   font-family: "Lobster", cursive;
   font-size: 1.4rem;
 }
+
+.parrafo_filtradas{
+  display: flex;
+  background-color: #e1eaf0;
+  justify-content: center;
+  align-items: baseline;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  font-family: "Lobster", cursive;
+}
+.parrafo_no_filtradas{
+  display: flex;
+  background-color: #e1eaf0;
+  flex-grow:1;
+  justify-content: center;
+  align-items: baseline;
+  padding: 0.5rem;
+  font-family: "Lobster", cursive;
+}

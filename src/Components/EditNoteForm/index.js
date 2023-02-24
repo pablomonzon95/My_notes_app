@@ -19,11 +19,13 @@ export const EditNoteForm = ({ note }) => {
     loadCategories();
   }, []);
 
+
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
 
     const form = e.target;
     const payload = new FormData(form);
+    console.log(payload)
 
     try {
       await editNoteService(note.id, payload);
@@ -77,36 +79,45 @@ export const EditNoteForm = ({ note }) => {
         {!deleteImage ? (
           <>
             <div className="image_button">
+           
               {note.image ? (
+                note.image === "No images" || note.image === null ? null : (
                 <>
                   <p>Imagen actual</p>
                   <img
+                    className="img_edit_form"
                     src={`${process.env.REACT_APP_BACKEND}/uploads/${note.image}`}
                     alt={note.title}
                   />
+                  <label htmlFor="deleteImage">Quitar imágen?</label>
+        <input
+          name="deleteImage"
+          type="checkbox"
+          onInput={(e) => {
+            setDeleteImage(e.target.checked);
+            
+            
+          }
+        }
+        defaultChecked={note.image === null}
+        />
                 </>
-              ) : null}
+                
+              ) ): null}
               <span className="addImage">
                 <label htmlFor="addImage"></label>
                 <input
                   className="upload_file"
                   type="file"
                   name="image"
-                  id="addImage"
+                  id="addImage"            
                 ></input>
               </span>
             </div>
+        
           </>
         ) : null}
 
-        <label htmlFor="deleteImage">Quitar imágen?</label>
-        <input
-          name="deleteImage"
-          type="checkbox"
-          onInput={(e) => {
-            setDeleteImage(e.target.checked);
-          }}
-        />
         <button type="submit">Edit note</button>
       </form>
     </div>

@@ -52,3 +52,6 @@ select {
   }
 }
 
+.img_edit_form{
+  max-width: 7rem;
+}

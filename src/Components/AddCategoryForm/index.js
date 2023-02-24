@@ -2,7 +2,7 @@ import "./style.css";
 import swal from "sweetalert";
 import { postCategoryService } from "../../services/categories";
 import { useModal } from "../../context/ModalContext";
-export const AddCategoryForm = () => {
+export const AddCategoryForm = ({categories, setCategories}) => {
   const [, setModal] = useModal();
 
   const handleSubmitaddCategoryData = async (e) => {
@@ -13,9 +13,16 @@ export const AddCategoryForm = () => {
     const payload = new FormData(form);
 
     try {
-      postCategoryService(payload)
-      form.reset();
+      const newCategory = await  postCategoryService(payload)
       setModal(null);
+      
+      console.log(setCategories)
+       setCategories([...categories, {
+        id: newCategory.id,
+        name: newCategory.name
+      },
+    ])  
+      form.reset();
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");
     }

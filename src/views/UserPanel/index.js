@@ -14,7 +14,7 @@ import swal from "sweetalert";
 import { getCategoriesService } from "../../services/categories";
 
 export const UserPanel = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState();
   const [, setModal] = useModal();
   const [loading, setLoading] = useState(true);
   const { notes, setNotes, getNotes } = useNotes();
@@ -71,7 +71,7 @@ export const UserPanel = () => {
       <Header viewtitle="This is you personal panel">
         <button
           onClick={() => {
-            setModal(<AddCategoryForm />);
+            setModal(<AddCategoryForm categories={categories} setCategories={setCategories}/>);
           }}
         >
           Add category
@@ -143,7 +143,7 @@ export const UserPanel = () => {
           </form>
 
           {filter ? (
-            <p>
+            <p className="parrafo_filtradas">
               Estás viendo las notas filtradas{" "}
               <button onClick={() => setFilter(null)}>Quitar filtro</button>
             </p>
@@ -153,9 +153,10 @@ export const UserPanel = () => {
             <NotesSection
               title="Your personal notes"
               notes={renderedNotes}
+              setNotes = {setNotes}
             ></NotesSection>
           ) : (
-            <p>No hay notas, cambia el filtro</p>
+            <p className="parrafo_no_filtradas">No hay notas, cambia el filtro</p>
           )}
         </>
       )}

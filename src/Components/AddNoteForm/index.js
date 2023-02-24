@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService } from "../../services/notes";
 
-export const AddNoteForm = ({ setNotes, notes }) => {
-  const [categories, setCategories] = useState([]);
+export const AddNoteForm = ({ categories, setCategories , setNotes, notes }) => {
+  
+/*   const [categories, setCategories] = useState([]); lo dejo comentado por las dudas  */
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -24,7 +25,7 @@ export const AddNoteForm = ({ setNotes, notes }) => {
 
     try {
       const note = await postNoteService(payload); //meter en una variable lo que venga del back (ver abajo)
-
+    
       setNotes([
         ...notes,
         {
