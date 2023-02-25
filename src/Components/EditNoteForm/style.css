@@ -1,27 +1,28 @@
-.note_form {
+.note_edit_form {
   display: flex;
   justify-content: center;
   background-color: #e1eaf0;
   border-bottom: 2px solid gray;
   padding-bottom: 1rem;
   padding-top: 1rem;
-  min-width: 100vw
-  
+  width: 60vw;
+  height: 50vh;
 }
-.note_form > form {
+.note_edit_form > form {
+  padding: 0rem 1rem;
   display: flex;
-  gap:0.7rem;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
-.note_form > form > label {
+.note_edit_form > form > label {
   font-family: "Lobster", cursive;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   margin-right: 0.25rem;
 }
 
-.note_form > form > input,
+.note_edit_form > form > input,
 select {
   padding: 0rem 0.5rem;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -35,23 +36,10 @@ select {
   border: none;
   border-radius: 5px;
 }
+.img_edit_form {
+  max-width: 8rem;
+}
 .image_button {
-
-
   justify-content: center;
   align-items: center;
-}
-
-@media (max-width: 881px) {
-  .note_form > form {
-    flex-direction: column;
-  }
-  .note_form > form > input,
-  select {
-    margin-bottom: 0.5rem;
-  }
-}
-
-.img_edit_form{
-  max-width: 7rem;
 }

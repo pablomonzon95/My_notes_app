@@ -1,12 +1,11 @@
 import "./style.css";
 import swal from "sweetalert";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService } from "../../services/notes";
 
-export const AddNoteForm = ({ categories, setCategories , setNotes, notes }) => {
-  
-/*   const [categories, setCategories] = useState([]); lo dejo comentado por las dudas  */
+export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
+  /*   const [categories, setCategories] = useState([]); lo dejo comentado por las dudas  */
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -15,6 +14,7 @@ export const AddNoteForm = ({ categories, setCategories , setNotes, notes }) => 
     };
 
     loadCategories();
+    // eslint-disable-next-line
   }, []);
 
   const handleSubmitaddNoteData = async (e) => {
@@ -25,14 +25,14 @@ export const AddNoteForm = ({ categories, setCategories , setNotes, notes }) => 
 
     try {
       const note = await postNoteService(payload); //meter en una variable lo que venga del back (ver abajo)
-    
+
       setNotes([
         ...notes,
         {
           id: note.id,
           title: note.title,
-          note: note.note,
-          image: note.image,
+          /* note: note.note, */
+          /* image: note.image, */
           public: note.public,
           userId: note.userId,
           categoryId: note.categoryId,

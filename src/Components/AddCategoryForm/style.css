@@ -4,20 +4,22 @@
   width: 40vw;
   height: 45vh;
   font-family: "Caveat", cursive;
-  justify-content: s;
   align-items: center;
   justify-content: space-around;
   text-align: center;
   overflow: auto;
 }
+
 .category_form form {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
   gap: 1rem;
 }
 .category_form > form > label {
+  padding-bottom: 2rem;
   font-size: 2.5rem;
   font-weight: 600;
 }
@@ -32,7 +34,7 @@
   font-size: 1rem;
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .category_form {
     max-width: 95vw;
     width: auto;

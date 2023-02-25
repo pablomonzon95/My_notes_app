@@ -42,7 +42,7 @@ export const NoteDetail = ({ id, notes, setNotes }) => {
       if (willDelete) {
         deleteNoteService(publicNote.id);
         setModal(null);
-        setNotes(notes.filter((note) => note.id === publicNote.id))
+        setNotes(notes.filter((note) => note.id !== publicNote.id));
         swal("Poof! Your note has been deleted!", {
           icon: "success",
         });
@@ -56,14 +56,15 @@ export const NoteDetail = ({ id, notes, setNotes }) => {
     <div className="note_detail">
       <img className="pin_detail" src="/img/pin.png" alt="pin"></img>
       <h2>{publicNote.title}</h2>
-      {publicNote.image ?
-      (publicNote.image === "No images" || publicNote.image === null ? null : (
-        <img
-          className="image_nota"
-          src={`${process.env.REACT_APP_BACKEND}/uploads/${publicNote.image}`}
-          alt={publicNote.title}
-        ></img>
-      )): null}
+      {publicNote.image ? (
+        publicNote.image === "No images" || publicNote.image === null ? null : (
+          <img
+            className="image_nota"
+            src={`${process.env.REACT_APP_BACKEND}/uploads/${publicNote.image}`}
+            alt={publicNote.title}
+          ></img>
+        )
+      ) : null}
       <p>{publicNote.note}</p>
       {localStorage.getItem("token") !== "null" && (
         <div className="edit_delete">

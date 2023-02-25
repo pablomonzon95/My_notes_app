@@ -19,7 +19,7 @@ export const UserPanel = () => {
   const [loading, setLoading] = useState(true);
   const { notes, setNotes, getNotes } = useNotes();
   const [categoryData, setCategoryData] = useState("");
-  const [filter, setFilter] = useState(null);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     getNotes();
@@ -53,14 +53,6 @@ export const UserPanel = () => {
       swal("An error has occured", error.response.data.message, "error");
     }
   };
-  // const handleSubmitFilterByCategory = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const result = await getNotesByCategories(categoryData);
-  //     const resultOk = result.data.data;
-  //     setNotes(resultOk);
-  //   } catch (error) {}
-  // };^
 
   const renderedNotes = filter
     ? notes.filter((note) => Number(note.categoryId) === Number(filter))
@@ -71,7 +63,12 @@ export const UserPanel = () => {
       <Header viewtitle="This is you personal panel">
         <button
           onClick={() => {
-            setModal(<AddCategoryForm categories={categories} setCategories={setCategories}/>);
+            setModal(
+              <AddCategoryForm
+                categories={categories}
+                setCategories={setCategories}
+              />
+            );
           }}
         >
           Add category
@@ -145,7 +142,7 @@ export const UserPanel = () => {
           {filter ? (
             <p className="parrafo_filtradas">
               Estás viendo las notas filtradas{" "}
-              <button onClick={() => setFilter(null)}>Quitar filtro</button>
+              <button onClick={() => setFilter("")}>Quitar filtro</button>
             </p>
           ) : null}
 
@@ -153,10 +150,12 @@ export const UserPanel = () => {
             <NotesSection
               title="Your personal notes"
               notes={renderedNotes}
-              setNotes = {setNotes}
+              setNotes={setNotes}
             ></NotesSection>
           ) : (
-            <p className="parrafo_no_filtradas">No hay notas, cambia el filtro</p>
+            <p className="parrafo_no_filtradas">
+              No hay notas, cambia el filtro
+            </p>
           )}
         </>
       )}
