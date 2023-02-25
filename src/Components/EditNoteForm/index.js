@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { editNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
+/* import { useNotes } from "../../hooks/useNotes"; */
 
-export const EditNoteForm = ({ note }) => {
+export const EditNoteForm = ({ note, notes, setNotes }) => {
   const [, setModal] = useModal();
   const [categories, setCategories] = useState([]);
-  const [deleteImage, setDeleteImage] = useState(false);
+  const [deleteImage /* setDeleteImage */] = useState(false);
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -22,13 +23,17 @@ export const EditNoteForm = ({ note }) => {
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
     const form = e.target;
+    console.log(note);
     const payload = new FormData(form);
 
     try {
-      await editNoteService(note.id, payload);
+      const noteEdit = await editNoteService(note.id, payload);
 
+      const notesupdated = notes.filter((note) => note.id !== noteEdit.id);
+      setNotes([noteEdit, ...notesupdated]);
       form.reset();
       setModal(null);
+
       swal("Note edited succesfully");
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");
@@ -89,10 +94,10 @@ export const EditNoteForm = ({ note }) => {
                     <input
                       name="deleteImage"
                       type="checkbox"
-                      onInput={(e) => {
+                      defaultChecked={note.deleteImage === "on"}
+                      /* onInput={(e) => {
                         setDeleteImage(e.target.checked);
-                      }}
-                      defaultChecked={note.image === null}
+                      }} */
                     />
                   </>
                 )

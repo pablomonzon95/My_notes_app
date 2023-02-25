@@ -9,12 +9,16 @@ export const getCategoriesService = async () => {
 
 export const postCategoryService = async (payload) => {
   const token = `Bearer ${localStorage.getItem("token")}`;
-  const response = await axios.post(`${process.env.REACT_APP_BACKEND}/categories`, payload, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      authorization: token,
-    },
-  })
+  const response = await axios.post(
+    `${process.env.REACT_APP_BACKEND}/categories`,
+    payload,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        authorization: token,
+      },
+    }
+  );
   return response.data.data;
 };
 

@@ -11,6 +11,7 @@ export const usePublicNotes = () => {
     public: "",
     userId: "",
     categoryId: "",
+    deleteImage: "",
   });
 
   const getNote = async (id) => {

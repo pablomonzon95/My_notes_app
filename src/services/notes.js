@@ -48,10 +48,15 @@ export const deleteNoteService = async (id) => {
 
 export const editNoteService = async (id, payload) => {
   const token = `Bearer ${localStorage.getItem("token")}`;
-  await axios.put(`${process.env.REACT_APP_BACKEND}/note/${id}`, payload, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      authorization: token,
-    },
-  });
+  const response = await axios.put(
+    `${process.env.REACT_APP_BACKEND}/note/${id}`,
+    payload,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        authorization: token,
+      },
+    }
+  );
+  return response.data.data;
 };

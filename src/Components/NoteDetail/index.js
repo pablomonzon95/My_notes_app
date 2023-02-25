@@ -24,7 +24,13 @@ export const NoteDetail = ({ id, notes, setNotes }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        setModal(<EditNoteForm note={publicNote}></EditNoteForm>);
+        setModal(
+          <EditNoteForm
+            note={publicNote}
+            notes={notes}
+            setNotes={setNotes}
+          ></EditNoteForm>
+        );
       } else {
         swal("Your note stay the same!");
       }
