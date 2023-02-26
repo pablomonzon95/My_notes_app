@@ -19,7 +19,7 @@ export const AddCategoryForm = ({ categories, setCategories }) => {
       setCategories([
         ...categories,
         {
-          id: newCategory.id,
+          id: newCategory.idCategory,
           name: newCategory.name,
         },
       ]);

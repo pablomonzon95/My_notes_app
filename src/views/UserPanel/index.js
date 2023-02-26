@@ -47,7 +47,9 @@ export const UserPanel = () => {
 
     try {
       await deleteCategoryService(categoryData);
-
+      setCategories(
+        categories.filter((item) => item.id !== Number(categoryData))
+      );
       swal("Categoria borrada correctamente");
     } catch (error) {
       swal("An error has occured", error.response.data.message, "error");

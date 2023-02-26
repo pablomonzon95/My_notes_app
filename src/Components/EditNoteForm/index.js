@@ -23,7 +23,7 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
   const handleSubmitaddNoteData = async (e) => {
     e.preventDefault();
     const form = e.target;
-    console.log(note);
+
     const payload = new FormData(form);
 
     try {
@@ -72,6 +72,7 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
                 key={category.id}
                 value={category.id}
                 selected={category.id === note.categoryId}
+                defaultValue={category.id === note.categoryId}
               >
                 {category.name}
               </option>
