@@ -1,4 +1,5 @@
 import "./style.css";
+import PropTypes from 'prop-types'
 import { NavLink } from "react-router-dom";
 export const Header = ({ viewtitle, children }) => {
   return (
@@ -21,3 +22,8 @@ export const Header = ({ viewtitle, children }) => {
     </div>
   );
 };
+
+Header.propTypes = {
+ viewtitle: PropTypes.string.isRequired,
+ children: PropTypes.any,
+}

@@ -1,4 +1,5 @@
-export const AddFilter = ({ categories, setCategories }) => {
+import PropTypes from 'prop-types'
+export const AddFilter = ({ categories }) => {
   return (
     <form>
       <label htmlFor="filter">select category</label>
@@ -15,3 +16,10 @@ export const AddFilter = ({ categories, setCategories }) => {
     </form>
   );
 };
+
+AddFilter.propTypes = {
+  categories: PropTypes.shape({
+    name: PropTypes.string,
+    id: PropTypes.number
+  }).isRequired,
+}

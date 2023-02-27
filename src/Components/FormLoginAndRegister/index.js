@@ -1,5 +1,6 @@
 import "./style.css";
-export const Form = ({ textoBoton, children, handleInputChangeFunction, handleSubmitFunction }) => {
+import PropTypes from 'prop-types'
+export const FormLoginAndRegister = ({ textoBoton, children, handleInputChangeFunction, handleSubmitFunction }) => {
   return (
     <form className="form" onSubmit={handleSubmitFunction}>
       <label htmlFor="email">Email</label>
@@ -11,3 +12,10 @@ export const Form = ({ textoBoton, children, handleInputChangeFunction, handleSu
     </form>
   );
 };
+
+FormLoginAndRegister.propTypes = {
+  textoBoton:PropTypes.string,
+  children: PropTypes.any,
+  handleInputChangeFunction:PropTypes.func.isRequired,
+  handleSubmitFunction: PropTypes.func.isRequired,
+}

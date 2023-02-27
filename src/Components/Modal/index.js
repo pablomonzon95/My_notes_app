@@ -1,5 +1,7 @@
 import { useModal } from "../../context/ModalContext";
+import PropTypes from 'prop-types'
 import "./style.css";
+
 const Modal = ({ children }) => {
   const [, setModal] = useModal();
 
@@ -10,4 +12,7 @@ const Modal = ({ children }) => {
   );
 };
 
+Modal.propTypes ={
+  Children: PropTypes.any
+}
 export default Modal;

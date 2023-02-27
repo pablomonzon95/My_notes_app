@@ -1,11 +1,13 @@
 import "./style.css";
+import PropTypes from 'prop-types'
 import swal from "sweetalert";
 import { useEffect } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService } from "../../services/notes";
 
+
 export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
-  /*   const [categories, setCategories] = useState([]); lo dejo comentado por las dudas  */
+
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -31,8 +33,8 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
         {
           id: note.id,
           title: note.title,
-          /* note: note.note, */
-          /* image: note.image, */
+          note: note.note, 
+          image: note.image,
           public: note.public,
           userId: note.userId,
           categoryId: note.categoryId,
@@ -82,3 +84,26 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
     </div>
   );
 };
+
+AddNoteForm.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    id:PropTypes.number
+  })).isRequired,
+  setCategories: PropTypes.func.isRequired,
+  setNotes:PropTypes.func.isRequired,
+  notes:PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired, 
+    note: PropTypes.string,
+    public: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.number,]),
+    image: PropTypes.string,
+    userId:PropTypes.number,
+    categoryId: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,])
+
+  }))
+}

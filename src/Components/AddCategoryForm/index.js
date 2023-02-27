@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import "./style.css";
 import swal from "sweetalert";
 import { postCategoryService } from "../../services/categories";
@@ -45,3 +46,11 @@ export const AddCategoryForm = ({ categories, setCategories }) => {
     </div>
   );
 };
+
+AddCategoryForm.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    id:PropTypes.number
+  })).isRequired,
+  setCategories: PropTypes.func.isRequired
+}

@@ -1,9 +1,11 @@
 import "./style.css";
+import PropTypes from 'prop-types'
 import swal from "sweetalert";
 import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { editNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
+
 /* import { useNotes } from "../../hooks/useNotes"; */
 
 export const EditNoteForm = ({ note, notes, setNotes }) => {
@@ -121,3 +123,36 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
     </div>
   );
 };
+EditNoteForm.propTypes = {
+  
+  setNotes:PropTypes.func.isRequired,
+
+  notes:PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired, 
+    note: PropTypes.string,
+    public: PropTypes.number,
+    image: PropTypes.string,
+    userId:PropTypes.number,
+    categoryId: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,])
+
+  })).isRequired,
+  note:PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired, 
+    note: PropTypes.string,
+    public: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.number,]),
+    image: PropTypes.string,
+    userId:PropTypes.number,
+    categoryId: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,])
+
+  }).isRequired,
+
+ 
+}

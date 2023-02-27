@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Footer } from "../../Components/Footer";
-import { Form } from "../../Components/Form";
+import { FormLoginAndRegister } from "../../Components/FormLoginAndRegister";
 import { Header } from "../../Components/Header";
 
 import { useSession } from "../../context/sessionToken";
@@ -47,11 +47,11 @@ export const Login = () => {
     <div className="form_login">
       <Header viewtitle="Login"></Header>
 
-      <Form
+      <FormLoginAndRegister
         handleInputChangeFunction={handleInputChangeLogin}
         handleSubmitFunction={handleSubmitLogin}
         textoBoton="Login"
-      ></Form>
+      ></FormLoginAndRegister>
       <Footer></Footer>
     </div>
   );

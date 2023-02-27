@@ -3,7 +3,7 @@ import swal from "sweetalert";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Form } from "../../Components/Form";
+import { FormLoginAndRegister } from "../../Components/FormLoginAndRegister";
 import { Header } from "../../Components/Header";
 import { Footer } from "../../Components/Footer";
 import { registerService } from "../../services/users";
@@ -48,7 +48,7 @@ export const Register = () => {
   return (
     <div className="form_register">
       <Header viewtitle="Register"></Header>
-      <Form
+      <FormLoginAndRegister
         handleInputChangeFunction={handleInputChangeRegister}
         handleSubmitFunction={handleSubmitRegister}
         textoBoton="Register"
@@ -61,7 +61,7 @@ export const Register = () => {
             name="repeatpassword"
           ></input>
         </div>
-      </Form>
+      </FormLoginAndRegister>
       <Footer></Footer>
     </div>
   );

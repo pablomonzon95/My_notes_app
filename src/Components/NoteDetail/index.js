@@ -1,4 +1,5 @@
 import "./style.css";
+import PropTypes from 'prop-types'
 import { useEffect } from "react";
 import { usePublicNotes } from "../../hooks/usePublicNotes";
 
@@ -91,3 +92,24 @@ export const NoteDetail = ({ id, notes, setNotes }) => {
     </div>
   );
 };
+
+NoteDetail.propTypes = {
+  id: PropTypes.number.isRequired,
+  setNotes:PropTypes.func,
+  notes:PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired, 
+    note: PropTypes.string,
+    public: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.number,]),
+    image: PropTypes.string,
+    userId:PropTypes.number,
+    categoryId: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,])
+
+  }))
+
+
+}
