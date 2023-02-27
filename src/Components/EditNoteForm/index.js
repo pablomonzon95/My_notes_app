@@ -1,5 +1,5 @@
 import "./style.css";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import swal from "sweetalert";
 import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
@@ -12,6 +12,7 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
   const [, setModal] = useModal();
   const [categories, setCategories] = useState([]);
   const [deleteImage /* setDeleteImage */] = useState(false);
+  /* const [deletedImage, setDeletedImage] = useState(""); */
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -32,7 +33,19 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
       const noteEdit = await editNoteService(note.id, payload);
 
       const notesupdated = notes.filter((note) => note.id !== noteEdit.id);
-      setNotes([noteEdit, ...notesupdated]);
+      setNotes([
+        {
+          id: noteEdit.id,
+          title: noteEdit.title,
+          /* note: note.note,
+          image: note.image, */
+          public: noteEdit.public,
+          userId: noteEdit.userId,
+          categoryId: noteEdit.categoryId,
+        },
+
+        ...notesupdated,
+      ]);
       form.reset();
       setModal(null);
 
@@ -64,7 +77,7 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
           type="checkbox"
           name="public"
           id="public"
-          defaultChecked={note.public === "on"}
+          defaultChecked={note.public === "on" || note.public === 1}
         ></input>
         <label htmlFor="categoryId">Category</label>
         <select className="select" name="categoryId" id="categoryId">
@@ -73,7 +86,7 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
               <option
                 key={category.id}
                 value={category.id}
-                selected={category.id === note.categoryId}
+                /* selected={category.id === note.categoryId} */
                 defaultValue={category.id === note.categoryId}
               >
                 {category.name}
@@ -86,8 +99,8 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
             <div className="image_button">
               {note.image ? (
                 note.image === "No images" || note.image === null ? null : (
-                  <>
-                    <p>Imagen actual</p>
+                  <div className="image_edit">
+                    <p>Current image</p>
                     <img
                       className="img_edit_form"
                       src={`${process.env.REACT_APP_BACKEND}/uploads/${note.image}`}
@@ -98,11 +111,8 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
                       name="deleteImage"
                       type="checkbox"
                       defaultChecked={note.deleteImage === "on"}
-                      /* onInput={(e) => {
-                        setDeleteImage(e.target.checked);
-                      }} */
                     />
-                  </>
+                  </div>
                 )
               ) : null}
               <span className="addImage">
@@ -124,35 +134,26 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
   );
 };
 EditNoteForm.propTypes = {
-  
-  setNotes:PropTypes.func.isRequired,
+  setNotes: PropTypes.func.isRequired,
 
-  notes:PropTypes.arrayOf(PropTypes.shape({
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      note: PropTypes.string,
+      public: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+      image: PropTypes.string,
+      userId: PropTypes.number,
+      categoryId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    })
+  ).isRequired,
+  note: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired,
     note: PropTypes.string,
-    public: PropTypes.number,
+    public: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
     image: PropTypes.string,
-    userId:PropTypes.number,
-    categoryId: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,])
-
-  })).isRequired,
-  note:PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired, 
-    note: PropTypes.string,
-    public: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.number,]),
-    image: PropTypes.string,
-    userId:PropTypes.number,
-    categoryId: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,])
-
+    userId: PropTypes.number,
+    categoryId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }).isRequired,
-
- 
-}
+};

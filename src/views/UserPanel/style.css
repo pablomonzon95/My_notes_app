@@ -36,7 +36,7 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-  padding: 0.5rem;
+  padding: 1rem;
   border-bottom: 2px solid gray;
 }
 
@@ -49,7 +49,8 @@
   background-color: #e1eaf0;
   justify-content: center;
   align-items: baseline;
-  padding: 0.5rem;
+  padding: 1.5rem;
+
   border-bottom: 2px solid gray;
 }
 .filter_form label {
@@ -57,7 +58,7 @@
   font-size: 1.4rem;
 }
 
-.parrafo_filtradas{
+.parrafo_filtradas {
   display: flex;
   background-color: #e1eaf0;
   justify-content: center;
@@ -66,10 +67,10 @@
   gap: 0.5rem;
   font-family: "Lobster", cursive;
 }
-.parrafo_no_filtradas{
+.parrafo_no_filtradas {
   display: flex;
   background-color: #e1eaf0;
-  flex-grow:1;
+  flex-grow: 1;
   justify-content: center;
   align-items: baseline;
   padding: 0.5rem;

@@ -83,14 +83,4 @@ ver si podemos hacer algo mas de diseño en login y registro en pantalla grande.
 
 // ver si podemos subir la app a vercel.
 
-//mirar que el editar una nota funcione solo queda que al refrescarse no quede la imagen y que si la imagen es publica quede checkeada por defecto.
-
-
-
-
-
-
-
-
-
-
+/

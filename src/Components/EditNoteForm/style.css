@@ -1,5 +1,6 @@
 .note_edit_form {
   display: flex;
+
   justify-content: center;
   background-color: #e1eaf0;
   border-bottom: 2px solid gray;
@@ -42,4 +43,18 @@ select {
 .image_button {
   justify-content: center;
   align-items: center;
+}
+.image_edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Lobster", cursive;
+  gap: 0.3rem;
+}
+
+@media (max-width: 700px) {
+  .note_edit_form {
+    height: 85vh;
+    width: 90vw;
+  }
 }

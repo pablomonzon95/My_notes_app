@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types'
+import "./style.css";
+import PropTypes from "prop-types";
 export const AddFilter = ({ categories }) => {
   return (
     <form>
@@ -20,6 +21,6 @@ export const AddFilter = ({ categories }) => {
 AddFilter.propTypes = {
   categories: PropTypes.shape({
     name: PropTypes.string,
-    id: PropTypes.number
+    id: PropTypes.number,
   }).isRequired,
-}
+};
