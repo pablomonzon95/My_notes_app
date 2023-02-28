@@ -1,12 +1,17 @@
-import PropTypes from 'prop-types'
 import "./style.css";
+import PropTypes from 'prop-types'
 import swal from "sweetalert";
 import { postCategoryService } from "../../services/categories";
 import { useModal } from "../../context/ModalContext";
+
+ /* Este componente se usa dentro de un modal que se activa al presionar unos de los botones
+ubicado en el User Panel para agregar nuevas categorias, consta de un formulario con su respectiva funcion manejadora. */
+
 export const AddCategoryForm = ({ categories, setCategories }) => {
   const [, setModal] = useModal();
 
   const handleSubmitaddCategoryData = async (e) => {
+
     e.preventDefault();
 
     const form = e.target;
@@ -14,7 +19,9 @@ export const AddCategoryForm = ({ categories, setCategories }) => {
     const payload = new FormData(form);
 
     try {
+
       const newCategory = await postCategoryService(payload);
+
       setModal(null);
 
       setCategories([
@@ -24,9 +31,13 @@ export const AddCategoryForm = ({ categories, setCategories }) => {
           name: newCategory.name,
         },
       ]);
+
       form.reset();
+
     } catch (error) {
+
       swal("An error has occured", error.response.data.message, "error");
+
     }
   };
 

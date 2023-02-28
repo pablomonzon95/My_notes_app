@@ -75,12 +75,8 @@ en frontend:
 
 ver si podemos hacer algo mas de diseño en login y registro en pantalla grande.
 
-// comentar el codigo.
-
-//que todo tenga el mismo orden.
-
 //cambiar el nombre de "seleccionar archivo".
 
 // ver si podemos subir la app a vercel.
 
-/
+// preparar populateDb para presentacion.

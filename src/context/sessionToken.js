@@ -1,12 +1,19 @@
+import swal from "sweetalert";
+
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+
+//Contexto utilizado para el manejo de sesiones a traves del jsonwebtoken
+//Tambien tiene una funcion de logout.
+
 const SessionContext = createContext(null);
 
 const SessionProvider = ({ children }) => {
+
   const navigate = useNavigate();
 
   const [token, setToken] = useState(localStorage.getItem("token"));
+
   const [adminId, setAdminId] = useState(localStorage.getItem("id"));
 
   useEffect(() => {

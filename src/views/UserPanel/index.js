@@ -1,3 +1,6 @@
+import "./style.css";
+import swal from "sweetalert";
+
 import { useEffect, useState } from "react";
 import { AddNoteForm } from "../../Components/AddNoteForm";
 import { AddCategoryForm } from "../../Components/AddCategoryForm";
@@ -7,19 +10,21 @@ import { NotesSection } from "../../Components/NotesSection";
 import { useSession } from "../../context/sessionToken";
 import { useNotes } from "../../hooks/useNotes";
 import { useModal } from "../../context/ModalContext";
-import "./style.css";
 import { deleteCategoryService } from "../../services/categories";
-import swal from "sweetalert";
-
 import { getCategoriesService } from "../../services/categories";
 
+//Vista del Panel del Usuario al logguearse en esta podemos ver las notas privadas, y varios componentes que le dan funcionalidades a la
+//aplicacion como eliminar categorias (solo el admin), crear notas, filtrar notas, etc.
+
 export const UserPanel = () => {
+
   const [categories, setCategories] = useState();
   const [, setModal] = useModal();
   const [loading, setLoading] = useState(true);
-  const { notes, setNotes, getNotes } = useNotes();
   const [categoryData, setCategoryData] = useState("");
   const [filter, setFilter] = useState("");
+
+  const { notes, setNotes, getNotes } = useNotes();
 
   useEffect(() => {
     getNotes();
@@ -28,6 +33,7 @@ export const UserPanel = () => {
       const results = await getCategoriesService();
       setCategories(results.data.data);
     })();
+
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -43,6 +49,7 @@ export const UserPanel = () => {
   };
 
   const handleSubmitDeleteCategoryData = async (e) => {
+
     e.preventDefault();
 
     try {

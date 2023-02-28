@@ -1,8 +1,11 @@
-import { useModal } from "../../context/ModalContext";
-import PropTypes from 'prop-types'
 import "./style.css";
+import PropTypes from 'prop-types'
+import { useModal } from "../../context/ModalContext";
+
+//Componente que da estructura a los diferentes modales que utilizamos en nuestra pàgina
 
 const Modal = ({ children }) => {
+
   const [, setModal] = useModal();
 
   return (

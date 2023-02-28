@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { getNoteService, getPublicNotesService } from "../services/notes";
 
+// Hook usado para obtener las notas que iran en el MainPage y para obtener la informacion de una nota en especìfico
+
 export const usePublicNotes = () => {
   const [publicNotes, setPublicNotes] = useState([]);
   const [publicNote, setPublicNote] = useState({

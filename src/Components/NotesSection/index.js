@@ -1,15 +1,19 @@
 import "./style.css";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+
 import { useModal } from "../../context/ModalContext";
 import { NoteDetail } from "../NoteDetail";
 
+//componente donde se muestran todas las notas, tanto en el User Panel como en el MainPage.
+// Al clickear en una nota se abre un modal
+
 export const NotesSection = ({ title, notes, setNotes }) => {
+
   const [, setModal] = useModal();
 
   return (
     <div className="notes_panel">
       <h1>{title}</h1>
-
       <ul>
         {notes.map((note) => {
           return (

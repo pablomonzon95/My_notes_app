@@ -1,6 +1,10 @@
 import "./style.css";
 import PropTypes from 'prop-types'
+
+//Formulario tanto usado para eel registro como para el login, recibe las funciones manejadores de cambio y de envio de formulario como 
+//componentes.
 export const FormLoginAndRegister = ({ textoBoton, children, handleInputChangeFunction, handleSubmitFunction }) => {
+
   return (
     <form className="form" onSubmit={handleSubmitFunction}>
       <label htmlFor="email">Email</label>

@@ -1,11 +1,16 @@
 import "./style.css";
 import PropTypes from "prop-types";
 import swal from "sweetalert";
+
 import { useEffect } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService } from "../../services/notes";
 
+//AddNoteForm es un componente que aparece en el userPanel para agregar nuevas notas, cada vez que se cambian las categorias, este se renderiza.
+//consta de un formulario para añadir la nota nueva con su respectiva funcion manejadora.
+
 export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
+  
   useEffect(() => {
     const loadCategories = async () => {
       const results = await getCategoriesService();
@@ -17,21 +22,23 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
   }, []);
 
   const handleSubmitaddNoteData = async (e) => {
+
     e.preventDefault();
 
     const form = e.target;
+
     const payload = new FormData(form);
 
     try {
-      const note = await postNoteService(payload); //meter en una variable lo que venga del back (ver abajo)
+
+      const note = await postNoteService(payload);
 
       setNotes([
         ...notes,
         {
           id: note.id,
           title: note.title,
-          /* note: note.note,
-          image: note.image, */
+   
           public: note.public,
           userId: note.userId,
           categoryId: note.categoryId,
@@ -41,8 +48,11 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
       form.reset();
 
       swal("Nota agregada correctamente");
+
     } catch (error) {
+
       swal("An error has occured", error.response.data.message, "error");
+
     }
   };
 

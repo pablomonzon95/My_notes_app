@@ -1,20 +1,24 @@
 import "./style.css";
 import PropTypes from "prop-types";
 import swal from "sweetalert";
+
 import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { editNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
 
-/* import { useNotes } from "../../hooks/useNotes"; */
+//EditNoteForm es un componente que aparece en un modal activado con un boton del NoteDetail. Sirve para editar notas, cada vez que se cambian las categorias, este se renderiza.
+//consta de un formulario para editar la nota correspondiente con su respectiva funcion manejadora.
 
 export const EditNoteForm = ({ note, notes, setNotes }) => {
+
   const [, setModal] = useModal();
   const [categories, setCategories] = useState([]);
-  const [deleteImage /* setDeleteImage */] = useState(false);
-  /* const [deletedImage, setDeletedImage] = useState(""); */
+  const [deleteImage] = useState(false);
+
 
   useEffect(() => {
+
     const loadCategories = async () => {
       const results = await getCategoriesService();
       setCategories(results.data.data);
@@ -24,15 +28,19 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
   }, []);
 
   const handleSubmitaddNoteData = async (e) => {
+
     e.preventDefault();
+
     const form = e.target;
 
     const payload = new FormData(form);
 
     try {
+
       const noteEdit = await editNoteService(note.id, payload);
 
       const notesupdated = notes.filter((note) => note.id !== noteEdit.id);
+
       setNotes([
         {
           id: noteEdit.id,
@@ -46,12 +54,17 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
 
         ...notesupdated,
       ]);
+
       form.reset();
+
       setModal(null);
 
       swal("Note edited succesfully");
+
     } catch (error) {
+
       swal("An error has occured", error.response.data.message, "error");
+
     }
   };
 
@@ -86,7 +99,6 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
               <option
                 key={category.id}
                 value={category.id}
-                /* selected={category.id === note.categoryId} */
                 defaultValue={category.id === note.categoryId}
               >
                 {category.name}
@@ -110,7 +122,6 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
                     <input
                       name="deleteImage"
                       type="checkbox"
-                      defaultChecked={note.deleteImage === "on"}
                     />
                   </div>
                 )

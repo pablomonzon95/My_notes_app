@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { getNotesService } from "../services/notes";
 
+// Hook usado para obtener las notas que iran en el UserPanel
+
 export const useNotes = () => {
+
   const [notes, setNotes] = useState([]);
 
   const getNotes = async () => {

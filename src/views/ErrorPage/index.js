@@ -1,8 +1,11 @@
 import "./style.css";
+
 import { Link } from "react-router-dom";
 
-export const ErrorPage =() => {
+//Vista que sale al poner una ruta incorrecta en el navegador
+//Redirecciona al User Page o MainPage segun corresponda
 
+export const ErrorPage =() => {
 
   return (
     <div className="error-page">

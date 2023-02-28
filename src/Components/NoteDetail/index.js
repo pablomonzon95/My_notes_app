@@ -1,14 +1,20 @@
 import "./style.css";
 import PropTypes from 'prop-types'
+import swal from "sweetalert";
+
 import { useEffect } from "react";
 import { usePublicNotes } from "../../hooks/usePublicNotes";
-
-import swal from "sweetalert";
 import { deleteNoteService } from "../../services/notes";
 import { useModal } from "../../context/ModalContext";
-
 import { EditNoteForm } from "../EditNoteForm";
+
+
+//Componente que se llama dentro de un modal al hacer click a alguna de las notas en el UserPanel o el MainPage.
+// aqui se crean las funciones manejadoras para los formularios de editar y eliminar notas se le pasan como props a sus respectivos
+//hijos
+
 export const NoteDetail = ({ id, notes, setNotes }) => {
+
   const { getNote, publicNote } = usePublicNotes();
   const [, setModal] = useModal();
 
@@ -16,14 +22,17 @@ export const NoteDetail = ({ id, notes, setNotes }) => {
     getNote(id);
     //eslint-disable-next-line
   }, []);
+
   const handleEditNote = () => {
     swal({
-      title: "Are you sure you want to edit this note?",
 
+      title: "Are you sure you want to edit this note?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
+
     }).then((willDelete) => {
+
       if (willDelete) {
         setModal(
           <EditNoteForm
@@ -39,13 +48,16 @@ export const NoteDetail = ({ id, notes, setNotes }) => {
   };
 
   const handleDeleteNote = () => {
+
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this note!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
+
     }).then((willDelete) => {
+
       if (willDelete) {
         deleteNoteService(publicNote.id);
         setModal(null);
