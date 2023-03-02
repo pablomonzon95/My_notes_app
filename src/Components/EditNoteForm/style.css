@@ -51,6 +51,41 @@ select {
   font-family: "Lobster", cursive;
   gap: 0.3rem;
 }
+.upload_file_modal {
+  display: none;
+}
+.label_addimage_modal {
+  font-family: "Lobster", cursive;
+  background-color: #e9eeef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #cecdcd;
+  width: 110px;
+  height: 50px;
+  border-radius: 1rem;
+  font-size: 1rem;
+  transition: 0.5s;
+}
+
+.add_image_modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label_addimage_modal:hover {
+  cursor: pointer;
+  background-color: #cccbcb;
+  transition: 0.75s;
+  text-shadow: 2px 2px 5px white;
+}
+.label_addimage_modal:active {
+  box-shadow: 4px 5px rgba(0, 0, 0, 0.2);
+}
+.add_image_modal img {
+  border-radius: 0.5rem;
+}
 
 @media (max-width: 700px) {
   .note_edit_form {

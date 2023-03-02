@@ -11,14 +11,11 @@ import { useModal } from "../../context/ModalContext";
 //consta de un formulario para editar la nota correspondiente con su respectiva funcion manejadora.
 
 export const EditNoteForm = ({ note, notes, setNotes }) => {
-
   const [, setModal] = useModal();
   const [categories, setCategories] = useState([]);
   const [deleteImage] = useState(false);
-
-
+  const [file, setFile] = useState();
   useEffect(() => {
-
     const loadCategories = async () => {
       const results = await getCategoriesService();
       setCategories(results.data.data);
@@ -28,7 +25,6 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
   }, []);
 
   const handleSubmitaddNoteData = async (e) => {
-
     e.preventDefault();
 
     const form = e.target;
@@ -36,12 +32,11 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
     const payload = new FormData(form);
 
     try {
-
       const noteEdit = await editNoteService(note.id, payload);
 
       const notesupdated = notes.filter((note) => note.id !== noteEdit.id);
 
-      setNotes([
+      const updatedNotes = [
         {
           id: noteEdit.id,
           title: noteEdit.title,
@@ -53,18 +48,17 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
         },
 
         ...notesupdated,
-      ]);
+      ].sort((a, b) => a.id - b.id);
+
+      setNotes(updatedNotes);
 
       form.reset();
 
       setModal(null);
 
       swal("Note edited succesfully");
-
     } catch (error) {
-
       swal("An error has occured", error.response.data.message, "error");
-
     }
   };
 
@@ -119,21 +113,30 @@ export const EditNoteForm = ({ note, notes, setNotes }) => {
                       alt={note.title}
                     />
                     <label htmlFor="deleteImage">Quitar imágen?</label>
-                    <input
-                      name="deleteImage"
-                      type="checkbox"
-                    />
+                    <input name="deleteImage" type="checkbox" />
                   </div>
                 )
               ) : null}
-              <span className="addImage">
-                <label htmlFor="addImage"></label>
+
+              <span className="add_image_modal">
+                <label className="label_addimage_modal" htmlFor="addImageModal">
+                  {note.image !== "No images" ? "Change image" : "Add Image"}
+                </label>
                 <input
-                  className="upload_file"
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                  }}
+                  className="upload_file_modal"
                   type="file"
                   name="image"
-                  id="addImage"
+                  id="addImageModal"
                 ></input>
+                {file ? (
+                  <img
+                    src={URL.createObjectURL(file)}
+                    style={{ width: "100px" }}
+                  />
+                ) : null}
               </span>
             </div>
           </>

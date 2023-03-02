@@ -2,7 +2,7 @@ import "./style.css";
 import PropTypes from "prop-types";
 import swal from "sweetalert";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getCategoriesService } from "../../services/categories";
 import { postNoteService } from "../../services/notes";
 
@@ -10,7 +10,7 @@ import { postNoteService } from "../../services/notes";
 //consta de un formulario para añadir la nota nueva con su respectiva funcion manejadora.
 
 export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
-  
+  const [file, setFile] = useState();
   useEffect(() => {
     const loadCategories = async () => {
       const results = await getCategoriesService();
@@ -22,7 +22,6 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
   }, []);
 
   const handleSubmitaddNoteData = async (e) => {
-
     e.preventDefault();
 
     const form = e.target;
@@ -30,7 +29,6 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
     const payload = new FormData(form);
 
     try {
-
       const note = await postNoteService(payload);
 
       setNotes([
@@ -38,7 +36,7 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
         {
           id: note.id,
           title: note.title,
-   
+
           public: note.public,
           userId: note.userId,
           categoryId: note.categoryId,
@@ -48,11 +46,8 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
       form.reset();
 
       swal("Nota agregada correctamente");
-
     } catch (error) {
-
       swal("An error has occured", error.response.data.message, "error");
-
     }
   };
 
@@ -76,14 +71,24 @@ export const AddNoteForm = ({ categories, setCategories, setNotes, notes }) => {
           })}
         </select>
         <div className="image_button">
-          <span className="addImage">
-            <label htmlFor="addImage">Add image</label>
+          <span className="add_image">
+            <label className="label_addform" htmlFor="addImage">
+              Add image
+            </label>
             <input
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+              }}
               className="upload_file"
               type="file"
               name="image"
               id="addImage"
+              accept="image/*"
             ></input>
+
+            {file ? (
+              <img src={URL.createObjectURL(file)} style={{ width: "100px" }} />
+            ) : null}
           </span>
         </div>
         <button type="submit">Add a note</button>
