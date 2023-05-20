@@ -1,3 +1,10 @@
+Este Proyecto es el Frontend que consumira la API REST creada por nosotros con el nombre de API_notes (ver proyecto en github). La tecnologìa utilizada para crear la misma es React.Js y Javascript. 
+
+
+This Project is the Frontend that will consume the REST API created by us with the name of API_notes (see project on github). The technology used to create it is React.Js and Javascript.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -69,14 +76,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-Cosas por mejorar hasta ahora:
 
-en frontend:
-
-ver si podemos hacer algo mas de diseño en login y registro en pantalla grande.
-
-//cambiar el nombre de "seleccionar archivo".
-
-// ver si podemos subir la app a vercel.
-
-// preparar populateDb para presentacion.
